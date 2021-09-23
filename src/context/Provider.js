@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // Importando o context para ser usado no Provider
 import RecipeContext from './RecipeContext';
 
 // Recebe como props o children
 function Provider({ children }) {
+  // Getter e setter que armazena informações de array do Meals ou Drinks, vinda do Search de Fetch API
+  const [mealsOrDrinks, setmealsOrDrinks] = useState([]);
+  // Getter e setter, do requisito 16, para permitir ou recusar redirecionamento conforme quantidade de itens na procura da SearchBar
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   // Getter e setter que armazena informações dos RadioButtons e tem como state inicial "ingrediente"
   const [searchType, setSearchType] = useState('ingrediente');
   // Getter e setter que armazena a informação de texto de procura digitado do usuário
@@ -25,11 +29,16 @@ function Provider({ children }) {
       }
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
-
     const responseJson = await response.json();
-    console.log(responseJson);
+    // Recebe o array de retorno do fetch API que foi executado acima
+    setmealsOrDrinks(responseJson.meals);
     return responseJson;
   };
+
+  // Comportamento de ComponentDidUpdate, e toda vez que o mealsOrDrinks for alterado, o ShouldRedirect será true.
+  useEffect(() => {
+    setShouldRedirect(true);
+  }, [mealsOrDrinks]);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestDrink = async (type, inputValue) => {
@@ -48,7 +57,8 @@ function Provider({ children }) {
     }
 
     const responseJson = await response.json();
-    console.log(responseJson);
+    // Recebe o array de retorno do fetch API que foi executado acima
+    setmealsOrDrinks(responseJson.drinks);
     return responseJson;
   };
 
@@ -60,6 +70,8 @@ function Provider({ children }) {
     setSearchInputValue, // Informação de campo de input de procura
     searchBarRequestFood, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     searchBarRequestDrink, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
+    mealsOrDrinks, // Função que recebe um array de Meals ou Drinks
+    shouldRedirect, // Função que permite ou bloqueia o redirecionamento conforme array mealsOrDrinks. Sua alteração é pelo useEffect no Provider
   };
 
   return (

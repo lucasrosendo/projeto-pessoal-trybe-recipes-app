@@ -1,6 +1,7 @@
 // Importando o hook useContext do react
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 // Importanndo o Context para utilizar os states do Context
 import RecipeContext from '../context/RecipeContext';
 
@@ -13,6 +14,8 @@ function SearchBar({ title }) {
     setSearchInputValue,
     searchBarRequestFood, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     searchBarRequestDrink, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
+    mealsOrDrinks, // Informação para receber o array com as Comidas do Fetch
+    shouldRedirect, // Booleano para permitir redirecionamento conforme informação do array Meals
   } = useContext(RecipeContext);
 
   // Função auxiliar para redirecionar, conforme título no Header('Comidas' ou 'Bebidas'), a função API que está no RecipeContext
@@ -25,8 +28,21 @@ function SearchBar({ title }) {
     }
   };
 
+  // A variável history vai receber do hook useHistory as informações de History do componente
+  const history = useHistory();
+
+  const redirect = (value) => {
+    if (mealsOrDrinks.length === 1 && value === 'Comidas') {
+      history.push(`comidas/${mealsOrDrinks[0].idMeal}`);
+    }
+    if (mealsOrDrinks.length === 1 && value === 'Bebidas') {
+      history.push(`bebidas/${mealsOrDrinks[0].idDrink}`);
+    }
+  };
+
   return (
-    <div>
+    <div className="search-body">
+      { shouldRedirect && redirect(title)}
       {/* Barra de Procura da SearchBar */}
       <input
         type="text"
