@@ -6,7 +6,7 @@ function DrinkExplore() {
     <div>
       <Header title="Explorar Bebidas" search={ false } />
     </div>
-  )
+  );
 }
 
 export default DrinkExplore;

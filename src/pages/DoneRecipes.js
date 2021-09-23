@@ -6,7 +6,7 @@ function DoneRecipes() {
     <div>
       <Header title="Receitas Feitas" search={ false } />
     </div>
-  )
+  );
 }
 
 export default DoneRecipes;

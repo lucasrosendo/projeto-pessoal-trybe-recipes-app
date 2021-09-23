@@ -6,7 +6,7 @@ function FavoriteRecipes() {
     <div>
       <Header title="Receitas Favoritas" search={ false } />
     </div>
-  )
+  );
 }
 
 export default FavoriteRecipes;

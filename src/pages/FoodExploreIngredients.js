@@ -6,7 +6,7 @@ function FoodExploreIngredients() {
     <div>
       <Header title="Explorar Ingredientes" search={ false } />
     </div>
-  )
+  );
 }
 
 export default FoodExploreIngredients;

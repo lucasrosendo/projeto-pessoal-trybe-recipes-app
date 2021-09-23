@@ -5,7 +5,7 @@ function DrinkDetails() {
     <div>
       Detalhes de uma receita de bebida
     </div>
-  )
+  );
 }
 
 export default DrinkDetails;

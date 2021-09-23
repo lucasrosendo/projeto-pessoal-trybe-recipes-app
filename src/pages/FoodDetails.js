@@ -5,7 +5,7 @@ function FoodDetails() {
     <div>
       Detalhes de uma receita de comida
     </div>
-  )
+  );
 }
 
 export default FoodDetails;

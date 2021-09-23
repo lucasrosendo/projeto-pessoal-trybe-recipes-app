@@ -6,7 +6,7 @@ function FoodExploreLocal() {
     <div>
       <Header title="Explorar Origem" />
     </div>
-  )
+  );
 }
 
 export default FoodExploreLocal;

@@ -26,7 +26,7 @@ function Provider({ children }) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
 
-    const responseJson = await response.json()
+    const responseJson = await response.json();
     console.log(responseJson);
     return responseJson;
   };

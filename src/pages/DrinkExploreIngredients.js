@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Header from '../components/Header';
 
 function DrinkExploreIngredients() {
@@ -6,7 +6,7 @@ function DrinkExploreIngredients() {
     <div>
       <Header title="Explorar Ingredientes" search={ false } />
     </div>
-  )
+  );
 }
 
 export default DrinkExploreIngredients;

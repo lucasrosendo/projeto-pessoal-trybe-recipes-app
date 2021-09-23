@@ -5,7 +5,7 @@ function FoodInProgress() {
     <div>
       Receita em progresso de comida
     </div>
-  )
+  );
 }
 
 export default FoodInProgress;
