@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route } from 'react-router-dom';
 
 // Importação das Páginas
-import Login from './pages/Login';
+import { Login, Explore, Foods, Drinks, Profile } from './pages';
 
 function App() {
   return (
@@ -13,6 +13,10 @@ function App() {
     <Switch>
       {/* Iniciando as rotas dos componentes */}
       <Route exact path="/" component={ Login } />
+      <Route exact path="/comidas" component={ Foods } />
+      <Route exact path="/bebidas" component={ Drinks } />
+      <Route exact path="/perfil" component={ Profile } />
+      <Route exact path="/explorar" component={ Explore } />
     </Switch>
   );
 }

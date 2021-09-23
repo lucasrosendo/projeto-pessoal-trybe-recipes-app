@@ -1,0 +1,12 @@
+.header {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 5x 20px;
+}
