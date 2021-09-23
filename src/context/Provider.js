@@ -5,6 +5,8 @@ import RecipeContext from './RecipeContext';
 
 // Recebe como props o children
 function Provider({ children }) {
+  // Getter e setter que controla o "Loading" enquanto as comidas ou bebidas estão sendo renderizadas, utilizadas nas páginas Drink e Food
+  const [isDrinkOrMealLoading, setIsDrinkOrMealLoading] = useState(false);
   // Getter e setter que armazena informações de array do Meals ou Drinks, vinda do Search de Fetch API
   const [mealsOrDrinks, setmealsOrDrinks] = useState([]);
   // Getter e setter, do requisito 16, para permitir ou recusar redirecionamento conforme quantidade de itens na procura da SearchBar
@@ -13,6 +15,24 @@ function Provider({ children }) {
   const [searchType, setSearchType] = useState('ingrediente');
   // Getter e setter que armazena a informação de texto de procura digitado do usuário
   const [searchInputValue, setSearchInputValue] = useState('');
+
+  // Função auxiliar, assíncrona, do requisito 25/26 cuja finalidade é fazer um fetch quando iniciar a page Bebidas
+  const directRequestDrink = async () => {
+    setIsDrinkOrMealLoading(true);
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setmealsOrDrinks(result.drinks);
+    setIsDrinkOrMealLoading(false);
+  };
+
+  // Função auxiliar, assíncrona, do requisito 25/26 cuja finalidade é fazer um fetch quando iniciar a page Comidas
+  const directRequestFood = async () => {
+    setIsDrinkOrMealLoading(true);
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const result = await response.json();
+    setmealsOrDrinks(result.meals);
+    setIsDrinkOrMealLoading(false);
+  };
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -80,6 +100,9 @@ function Provider({ children }) {
     searchBarRequestDrink, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     mealsOrDrinks, // Função que recebe um array de Meals ou Drinks
     shouldRedirect, // Função que permite ou bloqueia o redirecionamento conforme array mealsOrDrinks. Sua alteração é pelo useEffect no Provider
+    directRequestFood, // Função para fazer um fetch para abertura de page de Comidas
+    isDrinkOrMealLoading, // Controlar Loading dos fetchs de abertura de Comidas e Bebidas
+    directRequestDrink, // Função para fazer um fetch para abertura de page de Bebidas
   };
 
   return (

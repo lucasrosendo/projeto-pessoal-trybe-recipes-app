@@ -13,8 +13,17 @@ function Card({ card, index }) {
     const { strDrink, strDrinkThumb } = card;
     return (
       <div>
-        <h1 data-testid={ `${index}-card-name` }>{ strDrink }</h1>
-        <img data-testid={ `${index}-card-img` } src={ strDrinkThumb } alt={ strDrink } />
+        <h1
+          data-testid={ `${index}-card-name` }
+        >
+          { strDrink }
+
+        </h1>
+        <img
+          data-testid={ `${index}-card-img` }
+          src={ strDrinkThumb }
+          alt={ strDrink }
+        />
       </div>
     );
   };
