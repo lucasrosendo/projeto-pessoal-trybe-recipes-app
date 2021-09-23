@@ -30,8 +30,12 @@ function Provider({ children }) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
     const responseJson = await response.json();
-    // Recebe o array de retorno do fetch API que foi executado acima
-    setmealsOrDrinks(responseJson.meals);
+    // Recebe o array de retorno do fetch API que foi executado acima ou retorna um alert de erro que não foi encontrado itens nos filtros
+    if (responseJson.meals !== null) {
+      setmealsOrDrinks(responseJson.meals);
+    } else {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    }
     return responseJson;
   };
 
@@ -57,8 +61,12 @@ function Provider({ children }) {
     }
 
     const responseJson = await response.json();
-    // Recebe o array de retorno do fetch API que foi executado acima
-    setmealsOrDrinks(responseJson.drinks);
+    // Recebe o array de retorno do fetch API que foi executado acima ou retorna um alert de erro que não foi encontrado itens nos filtros
+    if (responseJson.drinks !== null) {
+      setmealsOrDrinks(responseJson.drinks);
+    } else {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    }
     return responseJson;
   };
 
