@@ -54,7 +54,7 @@ function SearchBar() {
           value="primeira letra"
           onChange={ ({ target }) => setSearchType(target.value) }
         />
-        Nome
+        Primeira Letra
       </label>
       <button
         type="button"

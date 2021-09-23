@@ -26,7 +26,7 @@ function Provider({ children }) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
 
-    const responseJson = await response.json()
+    const responseJson = await response.json();
     console.log(responseJson);
     return responseJson;
   };
@@ -37,7 +37,7 @@ function Provider({ children }) {
     setSearchType, // Informação dos Radio Buttons, conforme option checked
     searchInputValue, // Informação de campo de input de procura
     setSearchInputValue, // Informação de campo de input de procura
-    searchBarRequest, // // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
+    searchBarRequest, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
   };
 
   return (

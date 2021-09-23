@@ -6,14 +6,14 @@ import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
 
-import '../styles/Header.css';
+// import '../styles/Header.css';
 
 function Header({ title, search }) {
   // Getter e Setter do renderSearchBar para checagem se a SearchBar será renderizada ou não
   const [renderSearchBar, setRenderSearchBar] = useState(false);
 
   return (
-    <header>
+    <header className="header">
       {/* Redireciona para a página de Perfil */}
       <Link to="/perfil">
         <img
@@ -40,8 +40,8 @@ function Header({ title, search }) {
           />
         )
       }
-      {/* Com o renderSearchBar true então o componente SearchBar é executado */}
-      { renderSearchBar && <SearchBar /> }
+      {/* Com o renderSearchBar true então o componente SearchBar é chamado */}
+      { renderSearchBar && <SearchBar title={ title } /> }
     </header>
   );
 }
