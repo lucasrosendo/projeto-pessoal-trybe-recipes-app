@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../components/Header';
 
-function Profile() {
+function FoodExploreLocal() {
   return (
     <div>
-      <Header title="Perfil" search={ false } />
+      <Header title="Explorar Origem" />
     </div>
   );
 }
-export default Profile;
+
+export default FoodExploreLocal;
