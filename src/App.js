@@ -12,7 +12,7 @@ function App() {
     // O Switch permite, conforme conponente, redirecionar as rotas
     <Switch>
       {/* Iniciando as rotas dos componentes */}
-      <Route path="/" component={ Login } />
+      <Route exact path="/" component={ Login } />
     </Switch>
   );
 }
