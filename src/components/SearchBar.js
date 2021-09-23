@@ -1,8 +1,8 @@
 // Importando o hook useContext do react
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 // Importanndo o Context para utilizar os states do Context
+import { string } from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 
 // Componente funcional de SearchBar
@@ -95,5 +95,9 @@ function SearchBar({ title }) {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  title: string.isRequired,
+};
 
 export default SearchBar;

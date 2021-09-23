@@ -25,7 +25,7 @@ function Provider({ children }) {
     }
     if (type === 'primeira letra') {
       if (inputValue.length !== 1) {
-        return alert('Sua busca deve conter somente 1 (um) caracter');
+        return global.alert('Sua busca deve conter somente 1 (um) caracter');
       }
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
@@ -55,7 +55,7 @@ function Provider({ children }) {
     }
     if (type === 'primeira letra') {
       if (inputValue.length !== 1) {
-        return alert('Sua busca deve conter somente 1 (um) caracter');
+        return global.alert('Sua busca deve conter somente 1 (um) caracter');
       }
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${inputValue}`);
     }
