@@ -12,7 +12,7 @@ function Provider({ children }) {
   // Getter e setter que controla o "Loading" enquanto as comidas ou bebidas estão sendo renderizadas, utilizadas nas páginas Drink e Food
   const [isDrinkOrMealLoading, setIsDrinkOrMealLoading] = useState(false);
   // Getter e setter que armazena informações de array do Meals ou Drinks, vinda do Search de Fetch API
-  const [mealsOrDrinks, setmealsOrDrinks] = useState([]);
+  const [mealsOrDrinks, setMealsOrDrinks] = useState([]);
   // Getter e setter, do requisito 16, para permitir ou recusar redirecionamento conforme quantidade de itens na procura da SearchBar
   const [shouldRedirect, setShouldRedirect] = useState(false);
   // Getter e setter que armazena informações dos RadioButtons e tem como state inicial "ingrediente"
@@ -46,7 +46,7 @@ function Provider({ children }) {
     setIsDrinkOrMealLoading(true);
     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
-    setmealsOrDrinks(result.drinks);
+    setMealsOrDrinks(result.drinks);
     setIsDrinkOrMealLoading(false);
   };
 
@@ -55,7 +55,7 @@ function Provider({ children }) {
     setIsDrinkOrMealLoading(true);
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
     const result = await response.json();
-    setmealsOrDrinks(result.meals);
+    setMealsOrDrinks(result.meals);
     setIsDrinkOrMealLoading(false);
   };
 
@@ -77,7 +77,7 @@ function Provider({ children }) {
     const responseJson = await response.json();
     // Recebe o array de retorno do fetch API que foi executado acima ou retorna um alert de erro que não foi encontrado itens nos filtros
     if (responseJson.meals !== null) {
-      setmealsOrDrinks(responseJson.meals);
+      setMealsOrDrinks(responseJson.meals);
     } else {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
@@ -108,7 +108,7 @@ function Provider({ children }) {
     const responseJson = await response.json();
     // Recebe o array de retorno do fetch API que foi executado acima ou retorna um alert de erro que não foi encontrado itens nos filtros
     if (responseJson.drinks !== null) {
-      setmealsOrDrinks(responseJson.drinks);
+      setMealsOrDrinks(responseJson.drinks);
     } else {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
@@ -124,6 +124,7 @@ function Provider({ children }) {
     searchBarRequestFood, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     searchBarRequestDrink, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     mealsOrDrinks, // Função que recebe um array de Meals ou Drinks
+    setMealsOrDrinks, // Função controla o recebimento de um array de Meals ou Drinks
     shouldRedirect, // Função que permite ou bloqueia o redirecionamento conforme array mealsOrDrinks. Sua alteração é pelo useEffect no Provider
     directRequestFood, // Função para fazer um fetch para abertura de page de Comidas
     isDrinkOrMealLoading, // Controlar Loading dos fetchs de abertura de Comidas e Bebidas
@@ -132,6 +133,7 @@ function Provider({ children }) {
     setDrinkCategory, // Controlar o array de Categorias de Bebidas e Comidas
     foodCategory, // Array de Categorias de Bebidas e Comidas
     setFoodCategory, // Controlar o array de Categorias de Bebidas e Comidas
+    setIsDrinkOrMealLoading, // Controlar o loading de Comidas e Bebidas
   };
 
   return (
