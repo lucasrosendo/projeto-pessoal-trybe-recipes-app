@@ -15,9 +15,8 @@ import {
   DrinkExplore,
   DrinkExploreIngredients,
   DrinkInProgress,
-  DrinkDetails,
+  Details,
   FavoriteRecipes,
-  FoodDetails,
   FoodExplore,
   FoodExploreIngredients,
   FoodExploreLocal,
@@ -32,10 +31,10 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Foods } />
       <Route exact path="/bebidas" component={ Drinks } />
-      <Route exact path="/comidas/:id-da-receita" component={ FoodDetails } />
-      <Route exact path="/bebidas/:id-da-receita" component={ DrinkDetails } />
-      <Route path="/comidas/:id-da-receita/in-progress" component={ FoodInProgress } />
-      <Route path="/bebidas/:id-da-receita/in-progress" component={ DrinkInProgress } />
+      <Route exact path="/comidas/:id" component={ Details } />
+      <Route exact path="/bebidas/:id" component={ Details } />
+      <Route path="/comidas/:id/in-progress" component={ FoodInProgress } />
+      <Route path="/bebidas/:id/in-progress" component={ DrinkInProgress } />
       <Route exact path="/explorar" component={ Explore } />
       <Route exact path="/explorar/comidas" component={ FoodExplore } />
       <Route exact path="/explorar/bebidas" component={ DrinkExplore } />
