@@ -20,9 +20,11 @@ function Detalhes() {
   const render = () => {
     // Descobre se no link há informação de '/comidas' ou '/bebidas' para gerar a renderização
     const value = history.location.pathname;
+    // Se no link tiver 'comidas', renderiza renderFood
     if (value.includes('comidas')) {
       return renderFood();
     }
+    // Se no link tiver 'bebidas', renderiza renderDrink
     if (value.includes('bebidas')) {
       return renderDrink();
     }
