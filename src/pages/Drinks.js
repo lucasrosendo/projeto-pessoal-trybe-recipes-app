@@ -10,7 +10,7 @@ function Drinks() {
   // useEffect com comportamento de ComponentDidMount
   useEffect(() => {
     directRequestDrink();
-  }, [directRequestDrink]);
+  }, []);
 
   return (
     <div>

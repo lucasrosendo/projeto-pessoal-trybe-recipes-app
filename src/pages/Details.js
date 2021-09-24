@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 
-function Detalhes() {
+function Details() {
   // Importa do Context o state mealsOrDrinks que é um array generico que usamos para trazer as informações da API e salvar nele
   const { mealsOrDrinks } = useContext(RecipeContext);
   const history = useHistory();
@@ -35,4 +35,4 @@ function Detalhes() {
   );
 }
 
-export default Detalhes;
+export default Details;
