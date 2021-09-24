@@ -1,0 +1,16 @@
+.food-image {
+  border-radius: 6px;
+  height: 200px;
+  max-width: 300px;
+  width: 100%;
+  align-self: center;
+}
+
+.card .food-title {
+  background: rgb(248, 221, 190);
+  border: white 2px solid;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}

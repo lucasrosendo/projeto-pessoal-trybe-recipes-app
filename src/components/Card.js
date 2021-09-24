@@ -4,6 +4,8 @@ import React from 'react';
 // Importando o hook useHistory para buscar o pathname que indicará se é comida ou bebida
 import { useHistory } from 'react-router-dom';
 
+import '../styles/Card.css';
+
 // Componente funcional que recebe como props o elemento card e o index, vindo de uma HOF Map
 function Card({ card, index }) {
   const history = useHistory();
@@ -11,15 +13,17 @@ function Card({ card, index }) {
   const renderDrink = () => {
     // Descontruindo o strDrink e strDrinkThumb que estão no elemento card, e são chaves do elemento card
     const { strDrink, strDrinkThumb } = card;
+
     return (
-      <div>
+      <div className="card">
         <h1
+          className="food-title"
           data-testid={ `${index}-card-name` }
         >
           { strDrink }
-
         </h1>
         <img
+          className="food-image"
           data-testid={ `${index}-card-img` }
           src={ strDrinkThumb }
           alt={ strDrink }
@@ -33,9 +37,19 @@ function Card({ card, index }) {
     // Descontruindo o strMeal e strMealThumb que estão no elemento card, e são chaves do elemento card
     const { strMeal, strMealThumb } = card;
     return (
-      <div>
-        <h1 data-testid={ `${index}-card-name` }>{ strMeal }</h1>
-        <img data-testid={ `${index}-card-img` } src={ strMealThumb } alt={ strMeal } />
+      <div className="card">
+        <h1
+          className="food-title"
+          data-testid={ `${index}-card-name` }
+        >
+          { strMeal }
+        </h1>
+        <img
+          className="food-image"
+          data-testid={ `${index}-card-img` }
+          src={ strMealThumb }
+          alt={ strMeal }
+        />
       </div>
     );
   };
