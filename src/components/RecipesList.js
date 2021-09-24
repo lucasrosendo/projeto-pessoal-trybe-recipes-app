@@ -8,7 +8,7 @@ function RecipesList() {
 
   // Importando do context o state mealsOrDrinks que tem a informação do array contendo os itens buscados
   const { mealsOrDrinks } = useContext(RecipeContext);
-  console.log(mealsOrDrinks, "testeemals");
+
   return (
     <div>
       {

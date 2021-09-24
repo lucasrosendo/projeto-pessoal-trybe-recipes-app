@@ -2,7 +2,7 @@
 import { number, shape, string } from 'prop-types';
 import React from 'react';
 // Importando o hook useHistory para buscar o pathname que indicará se é comida ou bebida
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import '../styles/Card.css';
 
@@ -12,31 +12,34 @@ function Card({ card, index }) {
   // Função auxiliar para renderizar card de Drink
   const renderDrink = () => {
     // Descontruindo o strDrink e strDrinkThumb que estão no elemento card, e são chaves do elemento card
-    const { strDrink, strDrinkThumb } = card;
+    const { strDrink, strDrinkThumb, idDrink } = card;
 
     return (
-      <div className="card">
-        <h1
-          className="food-title"
-          data-testid={ `${index}-card-name` }
-        >
-          { strDrink }
-        </h1>
-        <img
-          className="food-image"
-          data-testid={ `${index}-card-img` }
-          src={ strDrinkThumb }
-          alt={ strDrink }
-        />
-      </div>
+      <Link to={ `/bebidas/${idDrink}` }>
+        <div className="card">
+          <h1
+            className="food-title"
+            data-testid={ `${index}-card-name` }
+          >
+            { strDrink }
+          </h1>
+          <img
+            className="food-image"
+            data-testid={ `${index}-card-img` }
+            src={ strDrinkThumb }
+            alt={ strDrink }
+          />
+        </div>
+      </Link>
     );
   };
 
   // Função auxiliar para renderizar card de Drink
   const renderFood = () => {
     // Descontruindo o strMeal e strMealThumb que estão no elemento card, e são chaves do elemento card
-    const { strMeal, strMealThumb } = card;
+    const { strMeal, strMealThumb, idMeal } = card;
     return (
+      <Link to={ `/comidas/${idMeal}` }>
       <div className="card">
         <h1
           className="food-title"
@@ -51,6 +54,7 @@ function Card({ card, index }) {
           alt={ strMeal }
         />
       </div>
+      </Link>
     );
   };
 

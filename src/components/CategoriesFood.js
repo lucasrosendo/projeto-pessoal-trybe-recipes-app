@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import RecipeContext from '../context/RecipeContext';
 
 function CategoriesFood() {
@@ -9,8 +9,6 @@ function CategoriesFood() {
     setMealsOrDrinks,
     directRequestFood,
   } = useContext(RecipeContext);
-
-  const [checkedButton, setCheckedButton] = useState(true);
 
   // Pegar no máximo 5 categorias e colocar na tela
   const MIN_CATEG = 5;
@@ -30,16 +28,13 @@ function CategoriesFood() {
     setIsDrinkOrMealLoading(false);
   };
 
-  const checkedButtonTrueFalse = (checkedButton) => {
-    setCheckedButton(!checkedButton);
-  };
-
   return (
     <div>
       <button
         type="button"
         value="All"
-        onClick={ ({ target }) => fetchFilterCategory(target.value) }
+        onClick={ () => directRequestFood() }
+        data-testid="All-category-filter"
       >
         All
       </button>
@@ -53,17 +48,16 @@ function CategoriesFood() {
               data-testid={ `${elem.strCategory}-category-filter` }
               type="button"
               value={ elem.strCategory }
-              key={ elem.strCategory }
               // Ao clicar no botão, será acionado a função fetchFilterCategory passando a ela o value como parametro, que é o botão clicado
               onClick={ ({ target }) => {
-                target.classList.toggle('selected');
-                if (target.className === 'selected') {
-                  fetchFilterCategory(target.value);
-                } else {
-                  directRequestFood();
-                }
+                target.firstChild.checked = !target.firstChild.checked;
+                return (
+                  target.firstChild.checked
+                    ? fetchFilterCategory(target.value) : directRequestFood());
               } }
+              key={ elem.strCategory }
             >
+              <input type="checkbox" style={ { display: 'none' } } />
               { elem.strCategory }
             </button>
           );
