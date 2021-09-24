@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import RecipeContext from '../context/RecipeContext';
 
 function CategoriesFood() {
@@ -7,7 +7,10 @@ function CategoriesFood() {
     foodCategory,
     setIsDrinkOrMealLoading,
     setMealsOrDrinks,
+    directRequestFood,
   } = useContext(RecipeContext);
+
+  const [checkedButton, setCheckedButton] = useState(true);
 
   // Pegar no máximo 5 categorias e colocar na tela
   const MIN_CATEG = 5;
@@ -25,6 +28,10 @@ function CategoriesFood() {
     const result = await response.json();
     setMealsOrDrinks(result.meals);
     setIsDrinkOrMealLoading(false);
+  };
+
+  const checkedButtonTrueFalse = (checkedButton) => {
+    setCheckedButton(!checkedButton);
   };
 
   return (
@@ -48,7 +55,14 @@ function CategoriesFood() {
               value={ elem.strCategory }
               key={ elem.strCategory }
               // Ao clicar no botão, será acionado a função fetchFilterCategory passando a ela o value como parametro, que é o botão clicado
-              onClick={ ({ target }) => fetchFilterCategory(target.value) }
+              onClick={ ({ target }) => {
+                target.classList.toggle('selected');
+                if (target.className === 'selected') {
+                  fetchFilterCategory(target.value);
+                } else {
+                  directRequestFood();
+                }
+              } }
             >
               { elem.strCategory }
             </button>

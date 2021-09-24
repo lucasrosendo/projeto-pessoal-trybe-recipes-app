@@ -8,7 +8,7 @@ function RecipesList() {
 
   // Importando do context o state mealsOrDrinks que tem a informação do array contendo os itens buscados
   const { mealsOrDrinks } = useContext(RecipeContext);
-
+  console.log(mealsOrDrinks, "testeemals");
   return (
     <div>
       {
@@ -19,7 +19,7 @@ function RecipesList() {
               return <Card key={ index } card={ elemento } index={ index } />;
             }
             // Se caso cair no return null o map é automaticamente parado e não é mais nada renderizado
-            return null;
+            return '';
           })
       }
     </div>
