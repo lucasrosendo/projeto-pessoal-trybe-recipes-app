@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import RecipesList from '../components/RecipesList';
 import Footer from '../components/Footer';
 import RecipeContext from '../context/RecipeContext';
+import CategoriesFood from '../components/CategoriesFood';
 
 function Foods() {
   const { directRequestFood, isDrinkOrMealLoading } = useContext(RecipeContext);
@@ -15,7 +16,13 @@ function Foods() {
   return (
     <div>
       <Header title="Comidas" />
-      { !isDrinkOrMealLoading ? <RecipesList /> : <p>Carregando</p> }
+      {
+        !isDrinkOrMealLoading ? (
+          <div>
+            <CategoriesFood />
+            <RecipesList />
+          </div>) : <p>Carregando</p>
+      }
       <Footer />
     </div>
   );
