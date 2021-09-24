@@ -11,15 +11,17 @@ function Card({ card, index }) {
   const renderDrink = () => {
     // Descontruindo o strDrink e strDrinkThumb que estão no elemento card, e são chaves do elemento card
     const { strDrink, strDrinkThumb } = card;
+
     return (
       <div>
         <h1
+          className="food-title"
           data-testid={ `${index}-card-name` }
         >
           { strDrink }
-
         </h1>
         <img
+          className="food-image"
           data-testid={ `${index}-card-img` }
           src={ strDrinkThumb }
           alt={ strDrink }
@@ -34,8 +36,16 @@ function Card({ card, index }) {
     const { strMeal, strMealThumb } = card;
     return (
       <div>
-        <h1 data-testid={ `${index}-card-name` }>{ strMeal }</h1>
-        <img data-testid={ `${index}-card-img` } src={ strMealThumb } alt={ strMeal } />
+        <h1
+          data-testid={ `${index}-card-name` }
+        >
+          { strMeal }
+        </h1>
+        <img
+          data-testid={ `${index}-card-img` }
+          src={ strMealThumb }
+          alt={ strMeal }
+        />
       </div>
     );
   };
