@@ -60,4 +60,4 @@ function CategoriesFood() {
   );
 }
 
-export default CategoriesFood;
+export default CategoriesFood; //
