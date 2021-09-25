@@ -1,6 +1,6 @@
+import React from 'react';
 // Importa o propTrypes descontruindo as funções necessárias
 import { number, shape, string } from 'prop-types';
-import React from 'react';
 // Importando o hook useHistory para buscar o pathname que indicará se é comida ou bebida
 import { Link, useHistory } from 'react-router-dom';
 
@@ -40,20 +40,20 @@ function Card({ card, index }) {
     const { strMeal, strMealThumb, idMeal } = card;
     return (
       <Link to={ `/comidas/${idMeal}` }>
-      <div className="card">
-        <h1
-          className="food-title"
-          data-testid={ `${index}-card-name` }
-        >
-          { strMeal }
-        </h1>
-        <img
-          className="food-image"
-          data-testid={ `${index}-card-img` }
-          src={ strMealThumb }
-          alt={ strMeal }
-        />
-      </div>
+        <div className="card">
+          <h1
+            className="food-title"
+            data-testid={ `${index}-card-name` }
+          >
+            { strMeal }
+          </h1>
+          <img
+            className="food-image"
+            data-testid={ `${index}-card-img` }
+            src={ strMealThumb }
+            alt={ strMeal }
+          />
+        </div>
       </Link>
     );
   };

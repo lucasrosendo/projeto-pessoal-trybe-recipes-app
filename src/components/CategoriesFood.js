@@ -5,24 +5,18 @@ function CategoriesFood() {
   // Importa do context o foodCategory para pegar as categorias de Comidas, o setIsDrinkOrMealLoading para indicar que as Comidas estão carregando e o setMealsOrDrinks para setar o novo array de Comidas
   const {
     foodCategory,
+    directRequestFood,
     setIsDrinkOrMealLoading,
     setMealsOrDrinks,
-    directRequestFood,
   } = useContext(RecipeContext);
 
   // Pegar no máximo 5 categorias e colocar na tela
   const MIN_CATEG = 5;
 
   // Fetch que faz a busca na API usando o filtro conforme value(que é o botão clicado)
-  const fetchFilterCategory = async (value) => {
-    let URL_API = '';
-    if (value === 'All') {
-      URL_API = 'https://www.themealdb.com/api/json/v1/1/search.php?s='; // Link que lista tudo
-    } else {
-      URL_API = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`; // Link que lista conforme filtro
-    }
+  const fetchCategory = async (value) => {
     setIsDrinkOrMealLoading(true);
-    const response = await fetch(URL_API);
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`);
     const result = await response.json();
     setMealsOrDrinks(result.meals);
     setIsDrinkOrMealLoading(false);
@@ -32,7 +26,6 @@ function CategoriesFood() {
     <div>
       <button
         type="button"
-        value="All"
         onClick={ () => directRequestFood() }
         data-testid="All-category-filter"
       >
@@ -53,7 +46,7 @@ function CategoriesFood() {
                 target.firstChild.checked = !target.firstChild.checked;
                 return (
                   target.firstChild.checked
-                    ? fetchFilterCategory(target.value) : directRequestFood());
+                    ? fetchCategory(target.value) : directRequestFood());
               } }
               key={ elem.strCategory }
             >
