@@ -31,15 +31,17 @@ function Header({ title, search }) {
           E quando for clicado no botão, será ativado o state RenderSearchBar para executar o
           componente de SearchBar. */}
         {
-          search && (
-            <input
-              onClick={ () => setRenderSearchBar(!renderSearchBar) }
-              type="image"
-              data-testid="search-top-btn"
-              src={ searchIcon }
-              alt="search"
-            />
-          )
+          search === false
+            ? ''
+            : (
+              <input
+                onClick={ () => setRenderSearchBar(!renderSearchBar) }
+                type="image"
+                data-testid="search-top-btn"
+                src={ searchIcon }
+                alt="search"
+              />
+            )
         }
         {/* Com o renderSearchBar true então o componente SearchBar é chamado */}
         { renderSearchBar && <SearchBar title={ title } /> }

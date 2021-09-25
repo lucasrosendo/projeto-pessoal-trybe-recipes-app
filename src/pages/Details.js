@@ -13,7 +13,7 @@ function Details() {
   );
 
   const renderFood = () => (
-    // Pega o título da primeira Comida do array
+  // Pega o título da primeira Comida do array
     <h1>{ mealsOrDrinks[0].strMeal }</h1>
   );
 
@@ -31,7 +31,9 @@ function Details() {
   };
 
   return (
-    render()
+    <div>
+      { render()}
+    </div>
   );
 }
 

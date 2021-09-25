@@ -1,9 +1,9 @@
 .food-image {
+  align-self: center;
   border-radius: 6px;
   height: 200px;
   max-width: 300px;
   width: 100%;
-  align-self: center;
 }
 
 .card .food-title {
