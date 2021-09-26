@@ -48,13 +48,13 @@ function Details() {
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.drinks);
-      requestRecommendedDrink();
+      requestRecommendedFood();
     }
     if (value.includes('comidas')) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.meals);
-      requestRecommendedFood();
+      requestRecommendedDrink();
     }
     setLoading(false);
 
@@ -142,7 +142,7 @@ function Details() {
         src={ handleYoutube() }
         title="YouTube video player"
       /> */}
-      <RecommendedList value={ recommendedDrink } />
+      <RecommendedList value={ recommendedFood } />
       <button
         className="start-recipe-btn"
         type="button"
@@ -188,7 +188,7 @@ function Details() {
         src={ handleYoutube() }
         title="YouTube video player"
       />
-      <RecommendedList value={ recommendedFood } />
+      <RecommendedList value={ recommendedDrink } />
       <button
         type="button"
         className="start-recipe-btn"
