@@ -13,6 +13,7 @@ function Details() {
   // Importa do Context o state mealsOrDrinks que é um array generico que usamos para trazer as informações da API e salvar nele
   const {
     setShouldRedirect,
+    addStartedRecipes,
     recommendedFood,
     recommendedDrink,
     setRecommendedFood,
@@ -48,13 +49,13 @@ function Details() {
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.drinks);
-      requestRecommendedDrink();
+      requestRecommendedFood();
     }
     if (value.includes('comidas')) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.meals);
-      requestRecommendedFood();
+      requestRecommendedDrink();
     }
     setLoading(false);
 
@@ -142,14 +143,13 @@ function Details() {
         src={ handleYoutube() }
         title="YouTube video player"
       /> */}
-      <RecommendedList value={ recommendedDrink } />
-      <button
-        className="start-recipe-btn"
-        type="button"
+      <RecommendedList value={ recommendedFood } />
+      <ButtonBegun
+        onClick={ () => addStartedRecipes(id) }
+        id={ id }
+        objDetail={ objDetail }
         data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-      </button>
+      />
     </div>
   );
 
@@ -188,14 +188,13 @@ function Details() {
         src={ handleYoutube() }
         title="YouTube video player"
       />
-      <RecommendedList value={ recommendedFood } />
-      <button
-        type="button"
-        className="start-recipe-btn"
-        data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-      </button>
+      <RecommendedList value={ recommendedDrink } />
+      <ButtonBegun
+        onClick={ () => addStartedRecipes(id) }
+        id={ id }
+        objDetail={ objDetail }
+        datatestid="start-recipe-btn"
+      />
     </div>
   );
 

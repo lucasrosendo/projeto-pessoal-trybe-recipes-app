@@ -8,7 +8,7 @@ function RecommendedCard({ index, card }) {
   const renderDrink = () => {
     // Desconstrói pegando o nome do drink, a imagem e o id do drink, vindo de card(props)
     const { strDrink, strDrinkThumb, idDrink } = card;
-
+    console.log('Card', card);
     return (
       <Link to={ `/bebidas/${idDrink}` }>
         <div
