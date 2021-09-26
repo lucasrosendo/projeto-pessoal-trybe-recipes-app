@@ -19,6 +19,10 @@ function Provider({ children }) {
   const [searchType, setSearchType] = useState('ingrediente');
   // Getter e setter que armazena a informação de texto de procura digitado do usuário
   const [searchInputValue, setSearchInputValue] = useState('');
+  // Getter e setter com array de Comidas recomendados
+  const [recommendedFood, setRecommendedFood] = useState([]);
+  // Getter e setter com array de Bebidas recomendados
+  const [recommendedDrink, setRecommendedDrink] = useState([]);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -139,8 +143,10 @@ function Provider({ children }) {
     searchBarRequestFood, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     mealsOrDrinks, // Função que recebe um array de Meals ou Drinks
     shouldRedirect, // Função que permite ou bloqueia o redirecionamento conforme array mealsOrDrinks. Sua alteração é pelo useEffect no Provider
-    // setDrinkCategory, // Controlar o array de Categorias de Bebidas e Comidas
-    // setFoodCategory, // Controlar o array de Categorias de Bebidas e Comidas
+    recommendedFood,
+    recommendedDrink,
+    setRecommendedFood,
+    setRecommendedDrink,
   };
 
   return (
