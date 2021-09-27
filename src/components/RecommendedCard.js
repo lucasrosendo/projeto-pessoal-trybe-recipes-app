@@ -59,11 +59,11 @@ function RecommendedCard({ index, card }) {
     const value = history.location.pathname;
     // Se no link tiver 'comidas', renderiza renderFood
     if (value.includes('comidas')) {
-      return renderFood();
+      return renderDrink();
     }
     // Se no link tiver 'bebidas', renderiza renderDrink
     if (value.includes('bebidas')) {
-      return renderDrink();
+      return renderFood();
     }
   };
 

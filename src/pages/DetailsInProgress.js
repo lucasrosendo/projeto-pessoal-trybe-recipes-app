@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../styles/Detalhes.css';
+import '../styles/Details.css';
 // npm install --save react-copy-to-clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -8,7 +8,8 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
 import RecipeContext from '../context/RecipeContext';
-import LinkCopiado from '../components/LinkCopiado';
+import LinkCopied from '../components/LinkCopied';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 function DetalhesInProgress() {
   const TWO_SECONDS = 2000;
@@ -100,13 +101,8 @@ function DetalhesInProgress() {
             alt={ objDetail[0].strDrink }
           />
         </CopyToClipboard>
-        <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strDrink }
-        />
+        <LinkCopied />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }
@@ -138,13 +134,8 @@ function DetalhesInProgress() {
             alt={ objDetail[0].strMeal }
           />
         </CopyToClipboard>
-        <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strMeal }
-        />
+        <LinkCopied />
+        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }
