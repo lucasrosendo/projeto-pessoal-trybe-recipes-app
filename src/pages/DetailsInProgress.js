@@ -21,13 +21,16 @@ function DetalhesInProgress() {
 
   const { setCopied } = useContext(RecipeContext);
 
+  // Faz uma requisição Fetch através do ID
   const requestByID = async () => {
     let response = [];
+    // Se a URL tiver "bebidas" então executa o fetch de bebidas
     if (urlText.includes('bebidas')) {
       response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
       await setObjDetail(responseJson.drinks);
     }
+    // Se a URL tiver "comidas" então executa o fetch de comidas
     if (urlText.includes('comidas')) {
       response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       const responseJson = await response.json();
@@ -38,25 +41,29 @@ function DetalhesInProgress() {
     }, TWO_SECONDS);
   };
 
+  // Busca informações de Ingredientes(strIngredient) e medições(strMeasure) do mesmo. Ou seja, Função que MONTA OS INGREDIENTES na tela quando chamada.
   const getIngredients = () => {
+    // Guarda na variável ingredientes um array com todas as informações chave+valor do ID no qual está com a página aberta
     const ingredientes = Object.entries(objDetail[0]);
 
+    console.log('ingredientes', ingredientes);
+    // Guarda na variável measure um array com todas as informaçoes 'strMeasure' de medição dos ingredientes
     const measure = ingredientes.filter((elem) => (
       elem[0].includes('strMeasure') && elem[1] !== null && elem[1] !== ''
     ));
+    // Guarda na variável measure um array com todas as informaçoes 'strIngredient'. Ou seja, guarda todos os ingredientes referenciados neste id em específico.
     const filtering = ingredientes.filter((element) => (
+      // Busca por elemento 'strIngredient'
       element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
 
+    // Guarda na variável results a ontagem de HTML com os <li> para ingrediente e <span> para medição
     const results = filtering.map((elem, index) => (
       <li
         key={ elem[1] }
         data-testid={ `${index}-ingredient-name-and-measure` }
       >
-        <label htmlFor={ elem[1] }>
-          <input type="checkbox" id={ elem[1] } />
-          {elem[1]}
-          <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
-        </label>
+        {elem[1]}
+        <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
       </li>));
 
     return results;
@@ -73,6 +80,7 @@ function DetalhesInProgress() {
     requestByID();
   }, []);
 
+  // Renderização de detalhes de Bebidas by Id
   const renderDrink = () => (
     <div className="details">
       <h1
@@ -88,6 +96,8 @@ function DetalhesInProgress() {
         alt={ objDetail[0].strDrink }
       />
       <div>
+        {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
+        da biblioteca react */}
         <CopyToClipboard
           text={ `http://localhost:3000${urlText}` }
           onCopy={ () => {
@@ -102,8 +112,11 @@ function DetalhesInProgress() {
           />
         </CopyToClipboard>
         <LinkCopied />
+        {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
+        Funcionalidades atendem requisitos */}
         <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
+      {/* Lista os Ingredientes na tela */}
       <ol className="ingredient-list">
         { getIngredients() }
       </ol>
@@ -111,6 +124,7 @@ function DetalhesInProgress() {
     </div>
   );
 
+  // Renderização de detalhes de Comidas by Id
   const renderFood = () => (
     <div className="details">
       <h1 data-testid="recipe-category">{objDetail[0].strCategory}</h1>
@@ -121,6 +135,8 @@ function DetalhesInProgress() {
         alt={ objDetail[0].strMeal }
       />
       <div>
+        {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
+        da biblioteca react */}
         <CopyToClipboard
           text={ `http://localhost:3000${urlText}` }
           onCopy={ () => {
@@ -135,8 +151,11 @@ function DetalhesInProgress() {
           />
         </CopyToClipboard>
         <LinkCopied />
+        {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
+        Funcionalidades atendem requisitos */}
         <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
+      {/* Lista os Ingredientes na tela */}
       <ol className="ingredient-list">
         { getIngredients() }
       </ol>

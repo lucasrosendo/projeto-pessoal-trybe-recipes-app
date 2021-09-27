@@ -1,9 +1,11 @@
+// Pega no localStorage a chave 'favoriteRecipes' que contem as comidas favoritas, ou seja, já existe essa chave criada
 const setComidaFavorita = (recipeObject) => {
-  console.log('entrou no if comidas');
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável allKeys
   const allKeys = Object.keys(recipeObject);
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável objeto. Guarda chaves id, type=comida, area, category, alcoholic, name e image
   const objeto = {
     id: recipeObject.idMeal,
     type: 'comida',
@@ -20,7 +22,7 @@ const setComidaFavorita = (recipeObject) => {
     image: recipeObject.strMealThumb,
   };
 
-  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`
+  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`, conforme o que já tinha(usando spread), e a nova informação
   const updateFav = [
     ...favoriteRecipes,
     objeto,
@@ -29,11 +31,12 @@ const setComidaFavorita = (recipeObject) => {
   localStorage.setItem('favoriteRecipes', JSON.stringify(updateFav));
 };
 
+// Salva no localStorage a Bebida Favorita quando não existem favoritos no localStorage ainda
 const setComidaFavoritaElse = (recipeObject) => {
-  console.log('entrou no if comidas');
-
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável allKeys
   const allKeys = Object.keys(recipeObject);
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável objeto. Guarda chaves id, type=comida, area, category, alcoholic, name e image
   const objeto = {
     id: recipeObject.idMeal,
     type: 'comida',
@@ -50,6 +53,7 @@ const setComidaFavoritaElse = (recipeObject) => {
     image: recipeObject.strMealThumb,
   };
 
+  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`, conforme o que já tinha(usando spread), e a nova informação
   const updateFav = [
     objeto,
   ];
@@ -57,12 +61,14 @@ const setComidaFavoritaElse = (recipeObject) => {
   localStorage.setItem('favoriteRecipes', JSON.stringify(updateFav));
 };
 
+// Pega no localStorage a chave 'favoriteRecipes' que contem as bebidas favoritas, ou seja, já existe essa chave criada
 const setBebidaFavorita = (recipeObject) => {
-  console.log('entrou no if Bebidas');
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável allKeys
   const allKeys = Object.keys(recipeObject);
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável objeto. Guarda chaves id, type=bebida, area, category, alcoholic, name e image
   const objeto = {
     id: recipeObject.idDrink,
     type: 'bebida',
@@ -79,6 +85,7 @@ const setBebidaFavorita = (recipeObject) => {
     image: recipeObject.strDrinkThumb,
   };
 
+  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`, conforme o que já tinha(usando spread), e a nova informação
   const updateFav = [
     ...favoriteRecipes,
     objeto,
@@ -87,11 +94,12 @@ const setBebidaFavorita = (recipeObject) => {
   localStorage.setItem('favoriteRecipes', JSON.stringify(updateFav));
 };
 
+// Salva no localStorage a Bebida Favorita quando não existem favoritos no localStorage ainda
 const setBebidaFavoritaElse = (recipeObject) => {
-  console.log('entrou no if bebidas');
-
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável allKeys
   const allKeys = Object.keys(recipeObject);
 
+  // Guarda todas as chaves encontradas do recipeObject passado como parametro, na variável objeto. Guarda chaves id, type=bebida, area, category, alcoholic, name e image
   const objeto = {
     id: recipeObject.idDrink,
     type: 'bebida',
@@ -108,6 +116,7 @@ const setBebidaFavoritaElse = (recipeObject) => {
     image: recipeObject.strDrinkThumb,
   };
 
+  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`, conforme nova informação
   const updateFav = [
     objeto,
   ];
@@ -115,25 +124,28 @@ const setBebidaFavoritaElse = (recipeObject) => {
   localStorage.setItem('favoriteRecipes', JSON.stringify(updateFav));
 };
 
+// Resumindo, busca a chave 'favoriteRecipes' cujo ID é o passado como parametro
 const isfavoriteRecipe = (idRecipe, callback) => {
+  // Se encontrar no localStorage uma chave 'favoriteRecipes'
   if (localStorage.getItem('favoriteRecipes') !== null) {
+    // Guarda em favoriteRecipes informação value que está na chave favoriteRecipes dentro do localStore. Detalhe, vai fazer tudo que está nesta chave
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
+    // Como guardou tudo dentro da variável favoriteRecipes, faz um SOME para trazer algum cujo ID seja igual ao passado ao parametro
     callback(favoriteRecipes.some((elem) => elem.id === idRecipe));
   }
 };
 
 const setFavorites = (recipeObject, url, id, callback) => {
-  console.log('inicio');
+  // Se não foi encontrado no localStorage a chave 'favoriteRecipes', então...
   if (localStorage.getItem('favoriteRecipes') !== null) {
-    console.log('entrou no if');
-
     if (url.includes('comidas')) {
       setComidaFavorita(recipeObject);
     }
     if (url.includes('bebida')) {
       setBebidaFavorita(recipeObject);
     }
+  // Se for encontrado no localStorage a chave 'favoriteRecipes', então...
   } else {
     if (url.includes('comidas')) {
       setComidaFavoritaElse(recipeObject);

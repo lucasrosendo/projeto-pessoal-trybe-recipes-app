@@ -11,10 +11,13 @@ function ButtonFavorite({ objDetail, urlText, id }) {
     isfavoriteRecipe(id, setIsFavorite);
   }, []);
 
+  // Retira do fatorito o id específico
   const removeFavorite = () => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const updatedFavorites = favoriteRecipes.filter((elem) => elem.id !== id);
+
     localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
+    // Chava a função isfavoriteRecipe, conforme parametros
     isfavoriteRecipe(id, setIsFavorite);
   };
 
@@ -26,6 +29,7 @@ function ButtonFavorite({ objDetail, urlText, id }) {
   };
 
   return (
+    // Renderiza na tela o ícone de Favoritos('ícone Coração')
     <input
       onClick={ onClickFavorite }
       type="image"
