@@ -19,6 +19,8 @@ import LinkCopiado from '../components/LinkCopied';
 // Importa função para ser embedada na tela de Comidas ou Bebidas
 import handleYoutube from '../services/HandleYoutube';
 
+import '../styles/Details.css';
+
 function Details() {
   const history = useHistory();
   // Grava no urlText a informação de pathname do history
