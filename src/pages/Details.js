@@ -112,8 +112,6 @@ function Details() {
         {elem[1]}
         <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
       </li>));
-
-
     return results;
   };
 
