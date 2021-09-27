@@ -20,6 +20,7 @@ const setComidaFavorita = (recipeObject) => {
     image: recipeObject.strMealThumb,
   };
 
+  // Salvando as receitas favoritas no `localStorage` na chave `favoriteRecipes`
   const updateFav = [
     ...favoriteRecipes,
     objeto,

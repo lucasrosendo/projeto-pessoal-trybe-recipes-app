@@ -15,6 +15,7 @@ import Loading from '../components/Loading';
 import RecommendedList from '../components/RecommendedList';
 import ButtonBegun from '../components/ButtonBegun';
 import LinkCopiado from '../components/LinkCopied';
+import ButtonFavorite from '../components/ButtonFavorite'
 
 // Importa função para ser embedada na tela de Comidas ou Bebidas
 import handleYoutube from '../services/HandleYoutube';
@@ -138,12 +139,7 @@ function Details() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strDrink }
-        />
+        <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }
@@ -183,12 +179,7 @@ function Details() {
           />
         </CopyToClipboard>
         <LinkCopiado />
-        <input
-          type="image"
-          data-testid="favorite-btn"
-          src={ whiteHeartIcon }
-          alt={ objDetail[0].strMeal }
-        />
+        <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       <ol className="ingredient-list">
         { getIngredients() }

@@ -18,11 +18,7 @@ function RecommendedList({ value }) {
         if (i < MAX_RECIPES) {
           return (
             <Carousel.Item>
-              <RecommendedCard
-                key={ i }
-                card={ elem }
-                index={ i }
-              />
+              <RecommendedCard key={ i } card={ elem } index={ i } />
             </Carousel.Item>
           );
         }
