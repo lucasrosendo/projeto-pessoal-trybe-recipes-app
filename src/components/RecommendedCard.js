@@ -1,5 +1,5 @@
-import { shape, string, number } from 'prop-types';
 import React from 'react';
+import { shape, string, number } from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 
 function RecommendedCard({ index, card }) {
@@ -8,14 +8,14 @@ function RecommendedCard({ index, card }) {
   const renderDrink = () => {
     // Desconstrói pegando o nome do drink, a imagem e o id do drink, vindo de card(props)
     const { strDrink, strDrinkThumb, idDrink } = card;
-    console.log('Card', card);
+
     return (
       <Link to={ `/bebidas/${idDrink}` }>
         <div
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 data-testid={ `${index}-card-name` }>{ strDrink }</h1>
+          <h1 data-testid={ `${index}-recomendation-title` }>{strDrink}</h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }
@@ -37,7 +37,12 @@ function RecommendedCard({ index, card }) {
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 data-testid={ `${index}-card-name` }>{ strMeal }</h1>
+          <h1
+            data-testid={ `${index}-recomendation-title` }
+            className="food-title"
+          >
+            {strMeal}
+          </h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }

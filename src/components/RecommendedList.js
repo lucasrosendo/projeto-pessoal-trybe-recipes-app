@@ -12,14 +12,12 @@ function RecommendedList({ value }) {
 
   const MAX_RECIPES = 6;
 
-  console.log('Value', value);
   return (
     <Carousel activeIndex={ index } onSelect={ handleSelect }>
-      { value.map((elem, i) => {
+      {value.map((elem, i) => {
         if (i < MAX_RECIPES) {
-          console.log('Carousel', i, ' ', elem);
           return (
-            <Carousel.Item key={ i }>
+            <Carousel.Item>
               <RecommendedCard
                 key={ i }
                 card={ elem }

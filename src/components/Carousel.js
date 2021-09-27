@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Carousel } from 'react-bootstrap'
+import React, { useState } from 'react';
+import { Carousel } from 'react-bootstrap';
 
 // Referência: https://react-bootstrap.github.io/components/carousel/
 function ControlledCarousel() {
@@ -10,7 +10,7 @@ function ControlledCarousel() {
   };
 
   return (
-    <Carousel activeIndex={ index } onSelect={ handleSelect }>
+    <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -52,4 +52,4 @@ function ControlledCarousel() {
   );
 }
 
-render(<ControlledCarousel />);
+export default ControlledCarousel;

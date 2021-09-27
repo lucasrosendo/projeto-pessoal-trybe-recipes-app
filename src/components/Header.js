@@ -43,9 +43,9 @@ function Header({ title, search }) {
               />
             )
         }
-        {/* Com o renderSearchBar true então o componente SearchBar é chamado */}
-        { renderSearchBar && <SearchBar title={ title } /> }
       </div>
+      {/* Com o renderSearchBar true então o componente SearchBar é chamado */}
+      { renderSearchBar && <SearchBar title={ title } /> }
     </header>
   );
 }

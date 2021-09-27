@@ -23,7 +23,7 @@ function CategoriesFood() {
   };
 
   return (
-    <div>
+    <div className="categorias">
       <button
         type="button"
         onClick={ () => directRequestFood() }
@@ -31,7 +31,6 @@ function CategoriesFood() {
       >
         All
       </button>
-
       {/* Percorre as categorias do Food pegando até no máximo 5 categorias
        conforme MIN_CATEG */}
       { foodCategory.map((elem, index) => {
@@ -51,7 +50,7 @@ function CategoriesFood() {
               key={ elem.strCategory }
             >
               <input type="checkbox" style={ { display: 'none' } } />
-              { elem.strCategory }
+              {elem.strCategory}
             </button>
           );
         }

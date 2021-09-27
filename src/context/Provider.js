@@ -23,6 +23,8 @@ function Provider({ children }) {
   const [recommendedFood, setRecommendedFood] = useState([]);
   // Getter e setter com array de Bebidas recomendados
   const [recommendedDrink, setRecommendedDrink] = useState([]);
+  // Getter e setter de controle de link copiado
+  const [copied, setCopied] = useState(false);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -143,10 +145,12 @@ function Provider({ children }) {
     searchBarRequestFood, // Função que está no Context e receberá as informações de busca da SearchBar conforme usuário definiu na tela
     mealsOrDrinks, // Função que recebe um array de Meals ou Drinks
     shouldRedirect, // Função que permite ou bloqueia o redirecionamento conforme array mealsOrDrinks. Sua alteração é pelo useEffect no Provider
-    recommendedFood,
-    recommendedDrink,
-    setRecommendedFood,
-    setRecommendedDrink,
+    recommendedFood, // Função de Comidas recomendadas
+    recommendedDrink, // Função de Bebidas recomendadas
+    setRecommendedFood, // Função de settar Comidas recomendadas
+    setRecommendedDrink, // Função de settar Bebidas recomendadas
+    copied, // Guarda o link copiado
+    setCopied, // Seta o link copiado na copied
   };
 
   return (
