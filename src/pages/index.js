@@ -12,3 +12,4 @@ export { default as Details } from './Details';
 export { default as FoodExplore } from './FoodExplore';
 export { default as FoodExploreIngredients } from './FoodExploreIngredients';
 export { default as FoodExploreLocal } from './FoodExploreLocal';
+export { default as NotFound } from './NotFound';

@@ -93,7 +93,7 @@ function DetailsInProgress() {
       {/* Lista os Ingredientes na tela */}
       <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <ButtonFinish />
+      <ButtonFinish objDetail={ objDetail } />
     </div>
   );
 
@@ -131,7 +131,7 @@ function DetailsInProgress() {
       {/* Lista os Ingredientes na tela */}
       <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
-      <ButtonFinish />
+      <ButtonFinish objDetail={ objDetail } />
     </div>
   );
 

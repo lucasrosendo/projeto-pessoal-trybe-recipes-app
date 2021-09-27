@@ -14,7 +14,7 @@ import RecipeContext from '../context/RecipeContext';
 import Loading from '../components/Loading';
 import RecommendedList from '../components/RecommendedList';
 import ButtonBegun from '../components/ButtonBegun';
-import LinkCopiado from '../components/LinkCopied';
+import LinkCopied from '../components/LinkCopied';
 import ButtonFavorite from '../components/ButtonFavorite';
 
 // Importa função para ser embedada na tela de Comidas ou Bebidas
@@ -113,7 +113,6 @@ function Details() {
         <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
       </li>));
 
-
     return results;
   };
 
@@ -140,6 +139,7 @@ function Details() {
         alt={ objDetail[0].strDrink }
       />
       <div>
+        <LinkCopied />
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
@@ -153,7 +153,7 @@ function Details() {
             alt={ objDetail[0].strDrink }
           />
         </CopyToClipboard>
-        <LinkCopiado />
+
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
         <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
@@ -185,6 +185,7 @@ function Details() {
         alt={ objDetail[0].strMeal }
       />
       <div>
+        <LinkCopied />
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
@@ -200,7 +201,7 @@ function Details() {
             alt={ objDetail[0].strMeal }
           />
         </CopyToClipboard>
-        <LinkCopiado />
+
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
         <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />

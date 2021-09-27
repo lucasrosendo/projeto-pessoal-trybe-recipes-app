@@ -20,6 +20,7 @@ import {
   FoodExploreIngredients,
   FoodExploreLocal,
   DetailsInProgress,
+  NotFound,
 } from './pages';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       <Route exact path="/perfil" component={ Profile } />
       <Route exact path="/receitas-feitas" component={ DoneRecipes } />
       <Route exact path="/receitas-favoritas" component={ FavoriteRecipes } />
+      <Route component={ NotFound } />
     </Switch>
   );
 }

@@ -7,6 +7,7 @@ import setFavorites, { isfavoriteRecipe } from '../services/setFavorites';
 function ButtonFavorite({ objDetail, urlText, id }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  // Com a renderização do botão, é executado a função isfavoriteRecipe, passando como parametro o id da comida/bebida
   useEffect(() => {
     isfavoriteRecipe(id, setIsFavorite);
   }, []);
