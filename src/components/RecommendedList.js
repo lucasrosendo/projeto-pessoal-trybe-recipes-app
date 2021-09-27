@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+// Referência: https://react-bootstrap.github.io/components/carousel/
 import { Carousel } from 'react-bootstrap';
 import RecommendedCard from './RecommendedCard';
 
