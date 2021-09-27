@@ -14,13 +14,12 @@ import {
   DoneRecipes,
   DrinkExplore,
   DrinkExploreIngredients,
-  DrinkInProgress,
   Details,
   FavoriteRecipes,
   FoodExplore,
   FoodExploreIngredients,
   FoodExploreLocal,
-  FoodInProgress,
+  DetailsInProgress,
 } from './pages';
 
 function App() {
@@ -33,8 +32,8 @@ function App() {
       <Route exact path="/bebidas" component={ Drinks } />
       <Route exact path="/comidas/:id" component={ Details } />
       <Route exact path="/bebidas/:id" component={ Details } />
-      <Route path="/comidas/:id/in-progress" component={ FoodInProgress } />
-      <Route path="/bebidas/:id/in-progress" component={ DrinkInProgress } />
+      <Route path="/comidas/:id/in-progress" component={ DetailsInProgress } />
+      <Route path="/bebidas/:id/in-progress" component={ DetailsInProgress } />
       <Route exact path="/explorar" component={ Explore } />
       <Route exact path="/explorar/comidas" component={ FoodExplore } />
       <Route exact path="/explorar/bebidas" component={ DrinkExplore } />
@@ -52,3 +51,14 @@ function App() {
 }
 
 export default App;
+
+// Requisitos 01 => test_coverage_spec.js
+// Requisitos 02-08 => login_spec.js
+// Requisitos 09-12 => header_spec.js
+// Requisitos 13-18 => header_search_bar_spec.js
+// Requisitos 19-24 => footer_spec.js
+// Requisitos 25-32 => recipes_list_spec.js
+// Requisitos 33-46 => recipe_detail_spec.js
+// Requisitos 47-53 => recipe_in_progress_spec.js
+
+// Requisitos 82-87 =>profile_spec.js
