@@ -162,6 +162,7 @@ function Details() {
       <ol className="ingredient-list">
         { getIngredients() }
       </ol>
+
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
       <RecommendedList value={ recommendedFood } />
       <ButtonBegun
