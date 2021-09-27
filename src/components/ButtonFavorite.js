@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import setFavoritos, { isfavoriteRecipe } from '../services/setFavoritos';
+import setFavorites, { isfavoriteRecipe } from '../services/setFavorites';
 
 function ButtonFavorite({ objDetail, urlText, id }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -22,7 +22,7 @@ function ButtonFavorite({ objDetail, urlText, id }) {
     if (isFavorite === true) {
       return removeFavorite();
     }
-    return setFavoritos(objDetail[0], urlText, id, setIsFavorite);
+    return setFavorites(objDetail[0], urlText, id, setIsFavorite);
   };
 
   return (
@@ -36,7 +36,7 @@ function ButtonFavorite({ objDetail, urlText, id }) {
   );
 }
 
-FavoriteBtn.propTypes = {
+ButtonFavorite.propTypes = {
   objDetail: PropTypes.shape(
     PropTypes.any,
   ).isRequired,
