@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import Header from '../components/Header';
-import RecipesList from '../components/RecipesList';
-import Footer from '../components/Footer';
-import RecipeContext from '../context/RecipeContext';
 import CategoriesFood from '../components/CategoriesFood';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import RecipesList from '../components/RecipesList';
+import RecipeContext from '../context/RecipeContext';
 
 function Foods() {
   const { directRequestFood, isDrinkOrMealLoading } = useContext(RecipeContext);
@@ -21,7 +21,8 @@ function Foods() {
         !isDrinkOrMealLoading ? (
           <div>
             <RecipesList />
-          </div>) : <p>Carregando</p>
+          </div>
+        ) : <p>Carregando</p>
       }
       <Footer />
     </div>

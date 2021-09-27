@@ -1,5 +1,5 @@
-import { shape, string, number } from 'prop-types';
 import React from 'react';
+import { shape, string, number } from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 
 function RecommendedCard({ index, card }) {
@@ -15,7 +15,7 @@ function RecommendedCard({ index, card }) {
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 data-testid={ `${index}-card-name` }>{ strDrink }</h1>
+          <h1 data-testid={ `${index}-recomendation-title` }>{strDrink}</h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }
@@ -37,7 +37,12 @@ function RecommendedCard({ index, card }) {
           className="recommended-card"
           data-testid={ `${index}-recomendation-card` }
         >
-          <h1 data-testid={ `${index}-card-name` }>{ strMeal }</h1>
+          <h1
+            data-testid={ `${index}-recomendation-title` }
+            className="food-title"
+          >
+            {strMeal}
+          </h1>
           <img
             className="recommended-image"
             data-testid={ `${index}-card-img` }
@@ -54,11 +59,11 @@ function RecommendedCard({ index, card }) {
     const value = history.location.pathname;
     // Se no link tiver 'comidas', renderiza renderFood
     if (value.includes('comidas')) {
-      return renderFood();
+      return renderDrink();
     }
     // Se no link tiver 'bebidas', renderiza renderDrink
     if (value.includes('bebidas')) {
-      return renderDrink();
+      return renderFood();
     }
   };
 

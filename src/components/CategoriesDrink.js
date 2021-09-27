@@ -23,7 +23,7 @@ function CategoriesDrink() {
   };
 
   return (
-    <div>
+    <div className="categorias">
       <button
         onClick={ () => directRequestDrink() }
         data-testid="All-category-filter"
@@ -38,8 +38,9 @@ function CategoriesDrink() {
         if (index < MIN_CATEG) {
           return (
             <button
-              type="button"
+              className=".drink-btn"
               data-testid={ `${elem.strCategory}-category-filter` }
+              type="button"
               value={ elem.strCategory }
               // Ao clicar no botão, será acionado a função fetchFilterCategory passando a ela o value como parametro, que é o botão clicado
               onClick={ ({ target }) => {
@@ -51,7 +52,7 @@ function CategoriesDrink() {
               key={ elem.strCategory }
             >
               <input style={ { display: 'none' } } type="checkbox" />
-              { elem.strCategory }
+              {elem.strCategory}
             </button>
           );
         }
