@@ -5,6 +5,8 @@ import Footer from '../components/Footer';
 import RecipesList from '../components/RecipesList';
 import RecipeContext from '../context/RecipeContext';
 
+import '../styles/Foods.css';
+
 function Foods() {
   const { directRequestFood, isDrinkOrMealLoading } = useContext(RecipeContext);
 
@@ -14,8 +16,9 @@ function Foods() {
   }, []);
 
   return (
-    <div>
+    <div className="comidas-body">
       <Header title="Comidas" />
+      <div className="recipes-background-color" />
       <CategoriesFood />
       {
         !isDrinkOrMealLoading ? (

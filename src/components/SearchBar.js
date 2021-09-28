@@ -60,7 +60,7 @@ function SearchBar(props) {
           id="ingrediente"
           data-testid="ingredient-search-radio"
           value="ingrediente"
-          checked
+          defaultChecked
           onChange={ ({ target }) => setSearchType(target.value) }
         />
         Ingrediente

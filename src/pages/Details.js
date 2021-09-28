@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 // npm install --save react-copy-to-clipboard
 // Biblioteca para copiar algo para copyboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -10,11 +9,10 @@ import shareIcon from '../images/shareIcon.svg';
 // import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import RecipeContext from '../context/RecipeContext';
-
 import Loading from '../components/Loading';
 import RecommendedList from '../components/RecommendedList';
 import ButtonBegun from '../components/ButtonBegun';
-import LinkCopiado from '../components/LinkCopied';
+import LinkCopied from '../components/LinkCopied';
 import ButtonFavorite from '../components/ButtonFavorite';
 
 // Importa função para ser embedada na tela de Comidas ou Bebidas
@@ -112,6 +110,7 @@ function Details() {
         {elem[1]}
         <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
       </li>));
+
     return results;
   };
 
@@ -137,7 +136,8 @@ function Details() {
         src={ objDetail[0].strDrinkThumb }
         alt={ objDetail[0].strDrink }
       />
-      <div>
+      <div className="icons">
+        <LinkCopied />
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
@@ -145,13 +145,14 @@ function Details() {
           onCopy={ handleCopied }
         >
           <input
+            className="share-btn"
             type="image"
             data-testid="share-btn"
             src={ shareIcon }
             alt={ objDetail[0].strDrink }
           />
         </CopyToClipboard>
-        <LinkCopiado />
+
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
         <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
@@ -183,6 +184,7 @@ function Details() {
         alt={ objDetail[0].strMeal }
       />
       <div>
+        <LinkCopied />
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
@@ -198,7 +200,7 @@ function Details() {
             alt={ objDetail[0].strMeal }
           />
         </CopyToClipboard>
-        <LinkCopiado />
+
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
         <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />

@@ -1,0 +1,104 @@
+import React, { useContext } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Link } from 'react-router-dom';
+import RecipeContext from '../context/RecipeContext';
+import shareIcon from '../images/shareIcon.svg';
+import LinkCopied from './LinkCopied';
+
+function CardDone({ objDetail, index }) {
+  const { setCopied } = useContext(RecipeContext);
+  const TWO_SECONDS = 2000;
+
+  const gettingTags = () => {
+    if (objDetail.type === 'comida') {
+      return objDetail.tags.map((elemento, i) => {
+        if (i < 2) {
+          return (
+            <span
+              className="tags"
+              key={ elemento }
+              data-testid={ `${index}-${elemento}-horizontal-tag` }
+            >
+              {elemento}
+            </span>
+          );
+        }
+        return '';
+      });
+    }
+    return '';
+  };
+
+  const handleCopied = () => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, TWO_SECONDS);
+  };
+
+  const render = () => (
+    <div className="done-card-body">
+      <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
+        <h1
+          data-testid={ `${index}-horizontal-name` }
+        >
+          {objDetail.name}
+        </h1>
+      </Link>
+
+      <div className="card-content">
+        <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
+          <img
+            src={ objDetail.image }
+            alt={ objDetail.name }
+            data-testid={ `${index}-horizontal-image` }
+          />
+        </Link>
+
+        <section>
+          <h3
+            data-testid={ `${index}-horizontal-top-text` }
+          >
+
+            <p>
+              {objDetail.area}
+              {objDetail.area && ' - '}
+              {objDetail.category}
+            </p>
+            <p>
+              {objDetail.alcoholicOrNot}
+            </p>
+
+          </h3>
+
+          {gettingTags()}
+          <CopyToClipboard
+            text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
+            onCopy={ () => {
+              handleCopied();
+            } }
+          >
+            <input
+              className="share-btn"
+              type="image"
+              data-testid={ `${index}-horizontal-share-btn` }
+              src={ shareIcon }
+              alt={ objDetail.id }
+            />
+          </CopyToClipboard>
+          <LinkCopied />
+          <p
+            className="finish-date"
+            data-testid={ `${index}-horizontal-done-date` }
+          >
+            {objDetail.doneDate}
+          </p>
+        </section>
+      </div>
+    </div>
+  );
+
+  return render();
+}
+
+export default CardDone;

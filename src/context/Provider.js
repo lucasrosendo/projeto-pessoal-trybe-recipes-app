@@ -25,6 +25,8 @@ function Provider({ children }) {
   const [recommendedDrink, setRecommendedDrink] = useState([]);
   // Getter e setter de controle de link copiado
   const [copied, setCopied] = useState(false);
+  // Getter e setter de controle do checkbox de Ingredientes
+  const [verifyCheckbox, setVerifyCheckbox] = useState([false]);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -151,6 +153,8 @@ function Provider({ children }) {
     setRecommendedDrink, // Função de settar Bebidas recomendadas
     copied, // Guarda o link copiado
     setCopied, // Seta o link copiado na copied
+    verifyCheckbox, // Controlar o checkbox de Ingredientes
+    setVerifyCheckbox, // Controlar o checkbox de Ingredientes
   };
 
   return (

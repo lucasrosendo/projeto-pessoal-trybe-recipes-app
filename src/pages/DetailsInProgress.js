@@ -5,16 +5,20 @@ import '../styles/Details.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+// import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import Loading from '../components/Loading';
 import RecipeContext from '../context/RecipeContext';
 import LinkCopied from '../components/LinkCopied';
-import FavoriteBtn from '../components/FavoriteBtn';
+import ButtonFavorite from '../components/ButtonFavorite';
+import ButtonFinish from '../components/ButtonFinish';
+import IngredientsCheckbox from '../components/IngredientsCheckbox';
 
-function DetalhesInProgress() {
+function DetailsInProgress() {
   const TWO_SECONDS = 2000;
   const history = useHistory();
   const urlText = history.location.pathname;
+  // Pega o pathname e retira o '/in-progress' - Requisito 51 (LinkCopied)
+  const urlDetails = urlText.split('/in-progress');
   const id = urlText.split('/')[2];
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,34 +43,6 @@ function DetalhesInProgress() {
     setTimeout(() => {
       setLoading(false);
     }, TWO_SECONDS);
-  };
-
-  // Busca informações de Ingredientes(strIngredient) e medições(strMeasure) do mesmo. Ou seja, Função que MONTA OS INGREDIENTES na tela quando chamada.
-  const getIngredients = () => {
-    // Guarda na variável ingredientes um array com todas as informações chave+valor do ID no qual está com a página aberta
-    const ingredientes = Object.entries(objDetail[0]);
-
-    console.log('ingredientes', ingredientes);
-    // Guarda na variável measure um array com todas as informaçoes 'strMeasure' de medição dos ingredientes
-    const measure = ingredientes.filter((elem) => (
-      elem[0].includes('strMeasure') && elem[1] !== null && elem[1] !== ''
-    ));
-    // Guarda na variável measure um array com todas as informaçoes 'strIngredient'. Ou seja, guarda todos os ingredientes referenciados neste id em específico.
-    const filtering = ingredientes.filter((element) => (
-      // Busca por elemento 'strIngredient'
-      element[0].includes('strIngredient') && element[1] !== null && element[1] !== ''));
-
-    // Guarda na variável results a ontagem de HTML com os <li> para ingrediente e <span> para medição
-    const results = filtering.map((elem, index) => (
-      <li
-        key={ elem[1] }
-        data-testid={ `${index}-ingredient-name-and-measure` }
-      >
-        {elem[1]}
-        <span>{measure[index] === undefined ? '' : measure[index][1]}</span>
-      </li>));
-
-    return results;
   };
 
   const handleCopied = () => {
@@ -99,7 +75,7 @@ function DetalhesInProgress() {
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
-          text={ `http://localhost:3000${urlText}` }
+          text={ `http://localhost:3000${urlDetails[0]}` }
           onCopy={ () => {
             handleCopied();
           } }
@@ -114,13 +90,12 @@ function DetalhesInProgress() {
         <LinkCopied />
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
-        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
+        <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       {/* Lista os Ingredientes na tela */}
-      <ol className="ingredient-list">
-        { getIngredients() }
-      </ol>
+      <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
+      <ButtonFinish objDetail={ objDetail } />
     </div>
   );
 
@@ -138,7 +113,7 @@ function DetalhesInProgress() {
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
-          text={ `http://localhost:3000${urlText}` }
+          text={ `http://localhost:3000${urlDetails[0]}` }
           onCopy={ () => {
             handleCopied();
           } }
@@ -153,13 +128,12 @@ function DetalhesInProgress() {
         <LinkCopied />
         {/* Chama o componente de Botão Favorito, conforme requisito 44 e 45.
         Funcionalidades atendem requisitos */}
-        <FavoriteBtn urlText={ urlText } objDetail={ objDetail } id={ id } />
+        <ButtonFavorite urlText={ urlText } objDetail={ objDetail } id={ id } />
       </div>
       {/* Lista os Ingredientes na tela */}
-      <ol className="ingredient-list">
-        { getIngredients() }
-      </ol>
+      <IngredientsCheckbox objDetail={ objDetail } id={ id } url={ urlText } />
       <p data-testid="instructions">{objDetail[0].strInstructions}</p>
+      <ButtonFinish objDetail={ objDetail } />
     </div>
   );
 
@@ -180,4 +154,4 @@ function DetalhesInProgress() {
   );
 }
 
-export default DetalhesInProgress;
+export default DetailsInProgress;
