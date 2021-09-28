@@ -27,6 +27,8 @@ function Provider({ children }) {
   const [copied, setCopied] = useState(false);
   // Getter e setter de controle do checkbox de Ingredientes
   const [verifyCheckbox, setVerifyCheckbox] = useState([false]);
+  // Getter e setter de controle de Receitas Favoritas
+  const [receitasFav, setReceitasFav] = useState([]);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -155,6 +157,8 @@ function Provider({ children }) {
     setCopied, // Seta o link copiado na copied
     verifyCheckbox, // Controlar o checkbox de Ingredientes
     setVerifyCheckbox, // Controlar o checkbox de Ingredientes
+    receitasFav, // Controlar as receitas Favoritas
+    setReceitasFav, // Controlar as receitas Favoritas
   };
 
   return (
