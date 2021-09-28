@@ -11,7 +11,6 @@ const getCurrentDate = () => {
 };
 
 const setDoneFood = (recipeObject) => {
-  console.log('entrou no if comidas');
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   const allKeys = Object.keys(recipeObject);
@@ -31,7 +30,9 @@ const setDoneFood = (recipeObject) => {
     name: recipeObject.strMeal,
     image: recipeObject.strMealThumb,
     doneDate: getCurrentDate(),
-    tags: recipeObject.strTags.split(',').map((elem) => elem),
+    tags: recipeObject.strTags !== null
+      ? recipeObject.strTags.split(',').map((elem) => elem)
+      : '',
   };
 
   const updateDone = [
@@ -43,8 +44,6 @@ const setDoneFood = (recipeObject) => {
 };
 
 const setDoneFoodElse = (recipeObject) => {
-  console.log('entrou no if comidas');
-
   const allKeys = Object.keys(recipeObject);
 
   const objeto = {
@@ -73,7 +72,6 @@ const setDoneFoodElse = (recipeObject) => {
 };
 
 const setDoneDrink = (recipeObject) => {
-  console.log('entrou no if Bebidas');
   const favoriteRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   const allKeys = Object.keys(recipeObject);
@@ -105,8 +103,6 @@ const setDoneDrink = (recipeObject) => {
 };
 
 const setDoneDrinkElse = (recipeObject) => {
-  console.log('entrou no if bebidas');
-
   const allKeys = Object.keys(recipeObject);
 
   const objeto = {
@@ -135,10 +131,7 @@ const setDoneDrinkElse = (recipeObject) => {
 };
 
 const setDoneRecipes = (recipeObject, url) => {
-  console.log('inicio');
   if (localStorage.getItem('doneRecipes') !== null) {
-    console.log('entrou no if');
-
     if (url.includes('comidas')) {
       setDoneFood(recipeObject);
     }
