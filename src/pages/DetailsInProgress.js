@@ -17,6 +17,7 @@ function DetailsInProgress() {
   const TWO_SECONDS = 2000;
   const history = useHistory();
   const urlText = history.location.pathname;
+  const urlDetails = urlText.split('/in-progress');
   const id = urlText.split('/')[2];
   const [objDetail, setObjDetail] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,7 +74,7 @@ function DetailsInProgress() {
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
-          text={ `http://localhost:3000${urlText}` }
+          text={ `http://localhost:3000${urlDetails[0]}` }
           onCopy={ () => {
             handleCopied();
           } }
@@ -111,7 +112,7 @@ function DetailsInProgress() {
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
         <CopyToClipboard
-          text={ `http://localhost:3000${urlText}` }
+          text={ `http://localhost:3000${urlDetails[0]}` }
           onCopy={ () => {
             handleCopied();
           } }

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import RecipeContext from '../context/RecipeContext';
 
 function IngredientsCheckbox({ objDetail, id, url }) {
+  const { setVerifyCheckbox } = useContext(RecipeContext);
+
   const verifyIngredientsChecked = () => {
     if (localStorage.getItem('inProgressRecipes') !== null) {
       const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -14,20 +17,36 @@ function IngredientsCheckbox({ objDetail, id, url }) {
     } else { return ['textoaleatorio']; }
   };
 
+  const verifyCheckbox = ({ target }) => {
+    const array = [];
+    const arrayLi = target.parentNode.parentNode.parentNode.childNodes;
+    arrayLi.forEach((elem) => {
+      const checkbox = elem.firstChild.firstChild;
+      if (checkbox.checked) {
+        array.push(true);
+      } else {
+        array.push(false);
+      }
+    });
+    // console.log(array);
+    setVerifyCheckbox(array);
+  };
+
   const handleChange = ({ target }) => {
     const ol = target.parentNode.parentNode.parentNode;
     const lista = ol.childNodes;
     const listaDeIngredientes = [];
-    console.log(ol);
+    // console.log(ol);
 
     lista.forEach((elem) => {
       const checkbox = elem.firstChild.firstChild;
+      // console.log(checkbox);
       if (checkbox.checked) {
         listaDeIngredientes.push(checkbox.id);
       }
     });
 
-    console.log(listaDeIngredientes);
+    // console.log(listaDeIngredientes);
     if (localStorage.getItem('inProgressRecipes') !== null) {
       const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
       if (url.includes('comidas')) {
@@ -65,6 +84,7 @@ function IngredientsCheckbox({ objDetail, id, url }) {
       target.parentNode.classList.remove(SELECTED_LI);
     } else { target.parentNode.classList.add(SELECTED_LI); }
   };
+  
   const getIngredients = () => {
     const ingredientes = Object.entries(objDetail[0]);
 
@@ -103,6 +123,7 @@ function IngredientsCheckbox({ objDetail, id, url }) {
 
   return (
     <ol
+      onChange={ verifyCheckbox }
       className="ingredient-list"
       id="ingredient-list"
     >

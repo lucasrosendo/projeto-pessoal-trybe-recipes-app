@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import CardDone from '../components/CardDone'
+import CardDone from '../components/CardDone';
 
 // Componente Funcional
 function DoneRecipes() {
