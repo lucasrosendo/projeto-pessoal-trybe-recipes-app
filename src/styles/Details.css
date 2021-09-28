@@ -6,6 +6,7 @@
   padding: 10px;
   text-align: justify;
 }
+
 .details img {
   height: 200px;
   margin: auto;
@@ -66,4 +67,3 @@
   border-radius: 6px;
   text-decoration: line-through;
 }
-

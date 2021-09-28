@@ -1,7 +1,7 @@
 .done-card-body {
   align-items: center;
   backdrop-filter: blur(10px);
-  background-color:aquamarine;
+  background-color: aquamarine;
   border-radius: 10px;
   box-shadow: 2px 3px 10px;
   display: flex;
@@ -41,7 +41,7 @@
 .done-card-body h1 {
   font-size: 30px;
   font-weight: 600;
-  z-index: 1000
+  z-index: 1000;
 }
 
 .done-card-body h3 {
@@ -52,7 +52,7 @@
   background-color: aqua;
   border-radius: 6px;
   color: red;
-  font-weight:  600;
+  font-weight: 600;
   margin: 5px;
   padding: 2px 10px;
 }
