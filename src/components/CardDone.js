@@ -5,6 +5,8 @@ import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 import LinkCopied from './LinkCopied';
 
+import '../styles/CardDone.css'
+
 function CardDone({ objDetail, index }) {
   const { setCopied } = useContext(RecipeContext);
   const TWO_SECONDS = 2000;
