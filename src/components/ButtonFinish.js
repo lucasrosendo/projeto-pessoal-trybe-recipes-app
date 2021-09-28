@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import setDoneRecipes from '../services/setDoneRecipes';
 
+import '../styles/ButtonFinish.css';
+
 function ButtonFinish({ objDetail }) {
   const { verifyCheckbox } = useContext(RecipeContext);
   const history = useHistory();

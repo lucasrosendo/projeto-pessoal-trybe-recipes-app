@@ -5,21 +5,21 @@ import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 import LinkCopied from './LinkCopied';
 
-function CardFeitas({ objDetail, index }) {
+function CardDone({ objDetail, index }) {
   const { setCopied } = useContext(RecipeContext);
   const TWO_SECONDS = 2000;
 
   const gettingTags = () => {
     if (objDetail.type === 'comida') {
-      return objDetail.tags.map((e, i) => {
+      return objDetail.tags.map((elemento, i) => {
         if (i < 2) {
           return (
             <span
               className="tags"
-              key={ e }
-              data-testid={ `${index}-${e}-horizontal-tag` }
+              key={ elemento }
+              data-testid={ `${index}-${elemento}-horizontal-tag` }
             >
-              {e}
+              {elemento}
             </span>
           );
         }
@@ -38,7 +38,6 @@ function CardFeitas({ objDetail, index }) {
 
   const render = () => (
     <div className="done-card-body">
-      <div className="bg" />
       <Link to={ `/${objDetail.type}s/${objDetail.id}` }>
         <h1
           data-testid={ `${index}-horizontal-name` }
@@ -61,12 +60,12 @@ function CardFeitas({ objDetail, index }) {
             data-testid={ `${index}-horizontal-top-text` }
           >
 
-            <p className="text">
+            <p>
               {objDetail.area}
               {objDetail.area && ' - '}
               {objDetail.category}
             </p>
-            <p className="text">
+            <p>
               {objDetail.alcoholicOrNot}
             </p>
 
@@ -102,4 +101,4 @@ function CardFeitas({ objDetail, index }) {
   return render();
 }
 
-export default CardFeitas;
+export default CardDone;

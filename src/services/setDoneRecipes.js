@@ -1,5 +1,4 @@
 const MAX_MONTH = 10;
-
 const getCurrentDate = () => {
   const newDate = new Date();
   const date = newDate.getDate();

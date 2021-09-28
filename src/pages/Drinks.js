@@ -5,6 +5,8 @@ import RecipesList from '../components/RecipesList';
 import RecipeContext from '../context/RecipeContext';
 import CategoriesDrink from '../components/CategoriesDrink';
 
+import '../styles/Drinks.css';
+
 function Drinks() {
   const { directRequestDrink, isDrinkOrMealLoading } = useContext(RecipeContext);
 
@@ -14,7 +16,8 @@ function Drinks() {
   }, []);
 
   return (
-    <div>
+    <div className="bebidas-body">
+      <div className="recipes-background-color" />
       <Header title="Bebidas" />
       <CategoriesDrink />
       {

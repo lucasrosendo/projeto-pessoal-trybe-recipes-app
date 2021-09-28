@@ -17,6 +17,7 @@ function DetailsInProgress() {
   const TWO_SECONDS = 2000;
   const history = useHistory();
   const urlText = history.location.pathname;
+  // Pega o pathname e retira o '/in-progress' - Requisito 51 (LinkCopied)
   const urlDetails = urlText.split('/in-progress');
   const id = urlText.split('/')[2];
   const [objDetail, setObjDetail] = useState([]);

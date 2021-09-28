@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 // npm install --save react-copy-to-clipboard
 // Biblioteca para copiar algo para copyboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -10,7 +9,6 @@ import shareIcon from '../images/shareIcon.svg';
 // import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 import RecipeContext from '../context/RecipeContext';
-
 import Loading from '../components/Loading';
 import RecommendedList from '../components/RecommendedList';
 import ButtonBegun from '../components/ButtonBegun';
@@ -138,7 +136,7 @@ function Details() {
         src={ objDetail[0].strDrinkThumb }
         alt={ objDetail[0].strDrink }
       />
-      <div>
+      <div className="icons">
         <LinkCopied />
         {/* Requisito 43 - Chama componente CopyToClipboard que foi importado
         da biblioteca react */}
@@ -147,6 +145,7 @@ function Details() {
           onCopy={ handleCopied }
         >
           <input
+            className="share-btn"
             type="image"
             data-testid="share-btn"
             src={ shareIcon }
