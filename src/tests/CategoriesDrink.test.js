@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoriesDrink from '../components/CategoriesDrink';
 import renderWithRouter from './renderWithRouter';
-
+ 
 describe('Verifica o componente CategoriesDrink', () => {
   it('Verifica se botão "All" de categorias existe', () => {
     const { getByTestId } = renderWithRouter(<CategoriesDrink />);
