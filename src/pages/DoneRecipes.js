@@ -12,7 +12,6 @@ function DoneRecipes() {
   const verify = () => {
     let filtered = []; // filtered começa com array vazio
 
-    console.log(localStorage.getItem('doneRecipes'));
     // Se o localStorage não for vazio ou nulo
     if (localStorage.getItem('doneRecipes') !== null) {
       // GUardo na variável doneRecipes os valores da chave 'doneRecipes' salva no localStorage
