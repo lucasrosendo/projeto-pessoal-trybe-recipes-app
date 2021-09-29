@@ -11,12 +11,46 @@ function Drinks() {
   const { directRequestDrink,
     isDrinkOrMealLoading,
     cameFromIngredient,
+    foodsOrDrinksByIngredient,
   } = useContext(RecipeContext);
+
+  const MAX_NUMBER = 12;
 
   // useEffect com comportamento de ComponentDidMount
   useEffect(() => {
-    console.log(cameFromIngredient);
+    directRequestDrink();
   }, []);
+
+  const element = !isDrinkOrMealLoading ? (
+    <div>
+      <RecipesList />
+    </div>
+  ) : <p>Carregando</p>;
+
+  const drinksByIngredientElement = (
+    foodsOrDrinksByIngredient.map((el, i) => {
+      if (i < MAX_NUMBER) {
+        return (
+          <div
+            key={ i }
+            data-testid={ `${i}-recipe-card` }
+          >
+            <span
+              data-testid={ `${i}-card-name` }
+            >
+              {el.strDrink}
+            </span>
+            <img
+              data-testid={ `${i}-card-img` }
+              src={ el.strDrinkThumb }
+              alt={ el.strDrinkThumb }
+            />
+          </div>
+        );
+      }
+      return '';
+    })
+  );
 
   return (
     <div className="bebidas-body">
@@ -24,10 +58,10 @@ function Drinks() {
       <Header title="Bebidas" />
       <CategoriesDrink />
       {
-        !isDrinkOrMealLoading ? (
-          <div>
-            <RecipesList />
-          </div>) : <p>Carregando</p>
+        !cameFromIngredient && element
+      }
+      {
+        cameFromIngredient && drinksByIngredientElement
       }
       <Footer />
     </div>

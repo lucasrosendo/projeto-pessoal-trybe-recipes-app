@@ -11,6 +11,7 @@ function Foods() {
   const { directRequestFood,
     isDrinkOrMealLoading,
     cameFromIngredient,
+    foodsOrDrinksByIngredient,
   } = useContext(RecipeContext);
 
   // useEffect com comportamento de ComponentDidMount
@@ -24,6 +25,26 @@ function Foods() {
     </div>
   ) : <p>Carregando</p>;
 
+  const foodsByIngredientElement = (
+    foodsOrDrinksByIngredient.map((el, i) => (
+      <div
+        key={ i }
+        data-testid={ `${i}-recipe-card` }
+      >
+        <span
+          data-testid={ `${i}-card-name` }
+        >
+          {el.strMeal}
+        </span>
+        <img
+          data-testid={ `${i}-card-img` }
+          src={ el.strMealThumb }
+          alt={ el.strMealThumb }
+        />
+      </div>
+    ))
+  );
+
   return (
     <div className="comidas-body">
       <Header title="Comidas" />
@@ -31,6 +52,9 @@ function Foods() {
       <CategoriesFood />
       {
         !cameFromIngredient && element
+      }
+      {
+        cameFromIngredient && foodsByIngredientElement
       }
       <Footer />
     </div>

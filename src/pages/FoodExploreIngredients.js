@@ -7,14 +7,15 @@ import RecipeContext from '../context/RecipeContext';
 function FoodExploreIngredients() {
   const [foodIngredients, setfoodIngredients] = useState([]); // variavel que irá armazenar o array com o nome das bebidas após a montagem do componente (conforme useEffect)
   const MAX_NUMBER = 12;
-  const { setCameFromIngredient, setFoodsByIngredient } = useContext(RecipeContext);
+  const { setCameFromIngredient,
+    setFoodsOrDrinksByIngredient } = useContext(RecipeContext);
 
   const getFoodsByIngredient = async (i) => {
     const element = document.getElementsByClassName('ingredients-container');
     const value = element[i].lastChild.innerText;
     const request = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${value}`);
     const { meals } = await request.json();
-    setFoodsByIngredient(meals);
+    setFoodsOrDrinksByIngredient(meals);
   };
 
   const requestFoodIngredients = async () => { // função que faz um fetch para buscar uma lista de ingredientes, retornando um array

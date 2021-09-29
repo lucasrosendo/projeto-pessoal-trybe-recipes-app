@@ -28,7 +28,7 @@ function Provider({ children }) {
   // Getter e setter de controle do checkbox de Ingredientes
   const [verifyCheckbox, setVerifyCheckbox] = useState([false]);
   // Getter e setter de controle das comidas por ingrediente - req 77
-  const [foodsByIngredient, setFoodsByIngredient] = useState([]);
+  const [foodsOrDrinksByIngredient, setFoodsOrDrinksByIngredient] = useState([]);
   // Getter e setter de controle da renderização de comidas ou bebidas por ingrediente - req 77
   const [cameFromIngredient, setCameFromIngredient] = useState(false);
 
@@ -159,8 +159,8 @@ function Provider({ children }) {
     setCopied, // Seta o link copiado na copied
     verifyCheckbox, // Controlar o checkbox de Ingredientes
     setVerifyCheckbox, // Controlar o checkbox de Ingredientes
-    setFoodsByIngredient, // Controlar a bebidas ou comidas que contem um ingrediente específico - req 77
-    foodsByIngredient,
+    setFoodsOrDrinksByIngredient, // Controlar a bebidas ou comidas que contem um ingrediente específico - req 77
+    foodsOrDrinksByIngredient,
     setCameFromIngredient,
     cameFromIngredient,
   };
