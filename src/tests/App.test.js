@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-test('Farewell, front-end', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/TRYBE/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Componente App', () => {
+  test('O componente App renderiza com sucesso', () => {
+    renderWithRouter(<App />);
+  });
 });

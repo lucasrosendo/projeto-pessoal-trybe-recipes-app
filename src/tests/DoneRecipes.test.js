@@ -14,6 +14,24 @@ describe('1 - Verifica os elementos presentes na tela Receitas Feitas', () => {
     expect(pageTitle.innerHTML).toBe('Receitas Feitas');
   });
 
+  test('Todos os data-testids estão disponíveis', () => {
+    renderWithRouter(<DoneRecipes title="Receitas Feitas" visible={ false } />);
+
+    expect(screen.queryByTestId('filter-by-all-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('filter-by-food-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('filter-by-drink-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('0-horizontal-image')).toBeInTheDocument();
+    expect(screen.queryByTestId('0-horizontal-top-text')).toBeInTheDocument();
+    expect(screen.queryByTestId('0-horizontal-name')).toBeInTheDocument();
+    expect(screen.queryByTestId('0-horizontal-share-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('0-horizontal-favorite-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('1-horizontal-image')).toBeInTheDocument();
+    expect(screen.queryByTestId('1-horizontal-top-text')).toBeInTheDocument();
+    expect(screen.queryByTestId('1-horizontal-name')).toBeInTheDocument();
+    expect(screen.queryByTestId('1-horizontal-share-btn')).toBeInTheDocument();
+    expect(screen.queryByTestId('1-horizontal-favorite-btn')).toBeInTheDocument();
+  });
+
   test('Verifica se os botões de filtro estão presentes', () => {
     const { getByTestId } = renderWithRouter(
       <DoneRecipes title="Receitas Feitas" visible={ false } />,
@@ -24,6 +42,22 @@ describe('1 - Verifica os elementos presentes na tela Receitas Feitas', () => {
     expect(btnAll).toBeInTheDocument();
     expect(btnFood).toBeInTheDocument();
     expect(btnDrink).toBeInTheDocument();
+  });
+
+  test('Ao clicar no botão de Food mostra apenas as Foods feitas', () => {
+    renderWithRouter(<DoneRecipes title="Receitas Feitas" visible={ false } />);
+    const filtrarFoods = screen.getByTestId('filter-by-food-btn');
+    userEvent.click(filtrarFoods);
+
+    expect(screen.getByText(/Penne/i)).toBeInTheDocument();
+  });
+
+  test('Ao clicar no botão de ALL mostra todas as receitas feitas', () => {
+    renderWithRouter(<DoneRecipes title="Receitas Feitas" visible={ false } />);
+    const filtrarAll = screen.getByTestId('filter-by-all-btn');
+    userEvent.click(filtrarAll);
+
+    expect(screen.getByText('Aquamarine')).toBeInTheDocument();
   });
 });
 
