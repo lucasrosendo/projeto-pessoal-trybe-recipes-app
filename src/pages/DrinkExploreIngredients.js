@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import IngredientsCard from '../components/IngredientsCard';
+import IngredientsDrinkCard from '../components/IngredientsDrinkCard';
 
 function DrinkExploreIngredients() {
   const [drinkIngredients, setDrinkIngredients] = useState([]); // variavel que irá armazenar o array com o nome das bebidas após a montagem do componente (conforme useEffect)
@@ -25,7 +25,7 @@ function DrinkExploreIngredients() {
       {drinkIngredients.map((el, i) => {
         if (i < MAX_NUMBER) {
           return (
-            <IngredientsCard
+            <IngredientsDrinkCard
             //  componente que renderiza cada card de comidas (imagem e nome)
               key={ i }
               ingredient={ el.strIngredient1 }

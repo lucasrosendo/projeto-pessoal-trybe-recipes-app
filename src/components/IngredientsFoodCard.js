@@ -9,7 +9,7 @@ function IngredientsCard({ ingredient, index }) { // componente montado para ren
     >
       <img
         data-testid={ `${index}-card-img` }
-        src={ `https://www.themealdb.com/images/ingredients/${ingredient}-small.png` }
+        src={ `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png` }
         alt={ ingredient }
       />
       <span
