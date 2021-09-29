@@ -37,7 +37,7 @@ function Login({ history }) {
           value={ email }
           onChange={ (e) => setEmail(e.target.value) }
           data-testid="email-input"
-          placeholder="Email"
+          placeholder="Email..."
         />
       </label>
       <label htmlFor="password">
@@ -49,7 +49,7 @@ function Login({ history }) {
           value={ password }
           onChange={ (e) => setPassword(e.target.value) }
           data-testid="password-input"
-          placeholder="Password"
+          placeholder="Password..."
         />
       </label>
       <button

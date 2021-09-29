@@ -17,7 +17,7 @@ describe('1 - Verifica os elementos presentes na tela explorar', () => {
     const { getByText } = renderWithRouter(
       <Explore title="Explorar" visible={ false } />,
     );
-    
+
     const btnExplorarComidas = getByText(/explorar comidas/i);
     const btnExplorarBebidas = getByText(/explorar bebidas/i);
     expect(btnExplorarComidas).toBeInTheDocument();
