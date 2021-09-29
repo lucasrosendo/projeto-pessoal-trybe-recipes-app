@@ -8,11 +8,14 @@ import CategoriesDrink from '../components/CategoriesDrink';
 import '../styles/Drinks.css';
 
 function Drinks() {
-  const { directRequestDrink, isDrinkOrMealLoading } = useContext(RecipeContext);
+  const { directRequestDrink,
+    isDrinkOrMealLoading,
+    cameFromIngredient,
+  } = useContext(RecipeContext);
 
   // useEffect com comportamento de ComponentDidMount
   useEffect(() => {
-    directRequestDrink();
+    console.log(cameFromIngredient);
   }, []);
 
   return (

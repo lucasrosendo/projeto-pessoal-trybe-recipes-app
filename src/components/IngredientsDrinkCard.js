@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function IngredientsCard({ ingredient, index }) { // componente montado para renderizar os ingredientes tanto de bebidas quanto de comidas
+function IngredientsDrinkCard({ ingredient, index }) { // componente montado para renderizar os ingredientes tanto de bebidas quanto de comidas
   return (
     <div
       className="ingredients-container"
@@ -21,9 +21,9 @@ function IngredientsCard({ ingredient, index }) { // componente montado para ren
   );
 }
 
-IngredientsCard.propTypes = ({
+IngredientsDrinkCard.propTypes = ({
   index: PropTypes.number.isRequired,
   ingredient: PropTypes.string.isRequired,
 });
 
-export default IngredientsCard;
+export default IngredientsDrinkCard;
