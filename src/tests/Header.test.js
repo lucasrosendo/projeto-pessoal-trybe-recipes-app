@@ -18,10 +18,10 @@ describe('Component Header', () => {
     expect(pageTitle).toBeInTheDocument();
   });
 
-  test('Não há um botão de search renderizado', () => {
+  test('Há um botão de Search', () => {
     renderWithRouter(<Header />);
 
-    const searchTopBtn = screen.getAllByRole('img');
-    expect(searchTopBtn.length).toBe(1);
+    const searchTopBtn = screen.getByTestId('search-top-btn');
+    expect(searchTopBtn).toBeInTheDocument();
   });
 });
