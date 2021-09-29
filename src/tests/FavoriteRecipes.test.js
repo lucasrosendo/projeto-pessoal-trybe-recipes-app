@@ -191,7 +191,8 @@ describe('2 - Verifica se uma receita favorita é carregada', () => {
 });
 
 describe('3 - Testa se quanto uma imagem ou título de receita é clicado', () => {
-  beforeAll(() => localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes)));
+  beforeAll(() => localStorage.setItem('favoriteRecipes',
+    JSON.stringify(favoriteRecipes)));
 
   test('Testa quando a imagem de receita é clicada', () => {
     const { getByTestId, history } = renderWithRouter(<FavoriteRecipes />);
