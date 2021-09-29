@@ -68,6 +68,7 @@ describe('1 - Verifica os testes da página de Perfil', () => {
     const { history, getByTestId } = renderWithRouter(
       <Profile title="Perfil" visible={ false } />,
     );
+
     history.push('/perfil');
     const botaoDeSair = getByTestId('profile-logout-btn');
     userEvent.click(botaoDeSair);

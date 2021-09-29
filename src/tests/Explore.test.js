@@ -13,6 +13,7 @@ describe('1 - Verifica os elementos presentes na tela explorar', () => {
     expect(pageTitle).toBeInTheDocument();
     expect(pageTitle.innerHTML).toBe('Explorar');
   });
+
   test('Os botões explorar comidas e bebidas estão presentes', () => {
     const { getByText } = renderWithRouter(
       <Explore title="Explorar" visible={ false } />,
@@ -36,6 +37,7 @@ describe('2 - Verifica se os botões redirecionam para a rota corretamente', () 
     const { pathname } = history.location;
     expect(pathname).toBe('/explorar/comidas');
   });
+  
   test('Verifica se botão "Explorar Bebidas" redireciona corretamente', () => {
     const { getByTestId, history } = renderWithRouter(
       <Explore title="Explorar" visible={ false } />,
