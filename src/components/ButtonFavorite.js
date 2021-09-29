@@ -33,7 +33,7 @@ function ButtonFavorite({ objDetail, urlText, id }) {
     // Renderiza na tela o ícone de Favoritos('ícone Coração')
     <input
       className="favorite-btn"
-      onClick={ onClickFavorite }
+      onClick={ () => onClickFavorite() }
       type="image"
       data-testid="favorite-btn"
       src={ isFavorite ? blackHeartIcon : whiteHeartIcon }

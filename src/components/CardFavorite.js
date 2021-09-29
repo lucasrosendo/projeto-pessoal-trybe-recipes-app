@@ -4,38 +4,33 @@ import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
 import shareIcon from '../images/shareIcon.svg';
 import LinkCopied from './LinkCopied';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
+// Usando o mesmo CSS do CardDone
 import '../styles/CardDone.css';
 
-function CardDone({ objDetail, index }) {
-  const { setCopied } = useContext(RecipeContext);
+function CardFavorite({ objDetail, index }) {
+  const { setCopied, setReceitasFav } = useContext(RecipeContext);
   const TWO_SECONDS = 2000;
-
-  const gettingTags = () => {
-    if (objDetail.type === 'comida') {
-      return objDetail.tags.map((elemento, i) => {
-        if (i < 2) {
-          return (
-            <span
-              className="tags"
-              key={ elemento }
-              data-testid={ `${index}-${elemento}-horizontal-tag` }
-            >
-              {elemento}
-            </span>
-          );
-        }
-        return '';
-      });
-    }
-    return '';
-  };
 
   const handleCopied = () => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
     }, TWO_SECONDS);
+  };
+
+  // Função para remoção do Favorito
+  const removeFavorite = () => {
+    if (localStorage.getItem('favoriteRecipes') !== null) {
+      // Guarda na variável favoriteRecipes todas as informações do localStorage com chave 'favoriteRecipes'
+      const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      // Guarda na variável updatedFavorites todas as informações, conforme filtro, que não pertencem ao id em específico passado abaixo
+      const updatedFavorites = favoriteRecipes.filter((elem) => elem.id !== objDetail.id);
+      // Atualiza localStorage
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
+      setReceitasFav(updatedFavorites);
+    }
   };
 
   const render = () => (
@@ -73,7 +68,6 @@ function CardDone({ objDetail, index }) {
 
           </h3>
 
-          {gettingTags()}
           <CopyToClipboard
             text={ `http://localhost:3000/${objDetail.type}s/${objDetail.id}` }
             onCopy={ () => {
@@ -89,12 +83,14 @@ function CardDone({ objDetail, index }) {
             />
           </CopyToClipboard>
           <LinkCopied />
-          <p
-            className="finish-date"
-            data-testid={ `${index}-horizontal-done-date` }
-          >
-            {objDetail.doneDate}
-          </p>
+          <input
+            className="favorite-btn"
+            type="image"
+            data-testid={ `${index}-horizontal-favorite-btn` }
+            onClick={ () => removeFavorite() }
+            src={ blackHeartIcon }
+            alt="favorite-btn"
+          />
         </section>
       </div>
     </div>
@@ -103,4 +99,4 @@ function CardDone({ objDetail, index }) {
   return render();
 }
 
-export default CardDone;
+export default CardFavorite;

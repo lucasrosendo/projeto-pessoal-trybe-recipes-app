@@ -31,6 +31,8 @@ function Provider({ children }) {
   const [foodsOrDrinksByIngredient, setFoodsOrDrinksByIngredient] = useState([]);
   // Getter e setter de controle da renderização de comidas ou bebidas por ingrediente - req 77
   const [cameFromIngredient, setCameFromIngredient] = useState(false);
+  // Getter e setter de controle de Receitas Favoritas
+  const [receitasFav, setReceitasFav] = useState([]);
 
   // Função assíncrona que recebe como parametro a informação do RadioButton(searchType) e o texto do usuário(searchInputValue)
   const searchBarRequestFood = async (type, inputValue) => {
@@ -163,6 +165,8 @@ function Provider({ children }) {
     foodsOrDrinksByIngredient,
     setCameFromIngredient,
     cameFromIngredient,
+    receitasFav, // Controlar as receitas Favoritas
+    setReceitasFav, // Controlar as receitas Favoritas
   };
 
   return (
