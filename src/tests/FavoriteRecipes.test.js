@@ -3,6 +3,9 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 import renderWithRouter from './renderWithRouter';
+import App from '../App';
+
+const favoriteUrl = '/receitas-favoritas';
 
 const favoriteRecipes = [
   {
@@ -38,6 +41,72 @@ afterEach(() => {
 });
 
 describe('1 - Verifica os elementos presentes na tela Receitas Favoritas', () => {
+  test('Verifica se o link é "/receitas-favoritas"', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push(favoriteUrl);
+    const { pathname } = history.location;
+    expect(pathname).toBe(favoriteUrl);
+  });
+
+  test('Verifica se o Header mostra botão profile', () => {
+    const { getByTestId } = renderWithRouter(<FavoriteRecipes />);
+    const profileBtn = getByTestId('profile-top-btn');
+    expect(profileBtn).toBeInTheDocument();
+  });
+
+  test('Verifica se é mostrado os filtros', () => {
+    const { getByText } = renderWithRouter(<FavoriteRecipes />);
+    const allBtn = getByText('All');
+    const foodBtn = getByText('Food');
+    const drinksBtn = getByText('Drinks');
+
+    expect(allBtn).toBeInTheDocument();
+    expect(foodBtn).toBeInTheDocument();
+    expect(drinksBtn).toBeInTheDocument();
+  });
+
+  test('Verifica se o nome da Receita é mostrado', () => {
+    const { getByText } = renderWithRouter(<FavoriteRecipes />);
+    const firstRecipeName = getByText('Spicy Arrabiata Penne');
+    expect(firstRecipeName).toBeInTheDocument();
+    const secondRecipeName = getByText('Aquamarine');
+    expect(secondRecipeName).toBeInTheDocument();
+  });
+
+  test('Verifica se a imagem da Receita é mostrada', () => {
+    const { getByTestId } = renderWithRouter(<FavoriteRecipes />);
+    const firstImage = getByTestId('0-horizontal-image');
+    expect(firstImage).toBeInTheDocument();
+    const secondImage = getByTestId('1-horizontal-image');
+    expect(secondImage).toBeInTheDocument();
+  });
+
+  test('Verifica se as informações da Receita é mostrada', () => {
+    const { getByTestId, getByText } = renderWithRouter(<FavoriteRecipes />);
+    const firstInfo = getByTestId('0-horizontal-top-text');
+    expect(getByText('Italian - Vegetarian')).toBeInTheDocument();
+    expect(firstInfo).toBeInTheDocument();
+    const secondInfo = getByTestId('1-horizontal-top-text');
+    expect(secondInfo).toBeInTheDocument();
+    expect(getByText('Alcoholic')).toBeInTheDocument();
+  });
+
+  test('Verifica se o botão de compartilhamento é mostrado', () => {
+    const { getByTestId } = renderWithRouter(<FavoriteRecipes />);
+    const firstShare = getByTestId('0-horizontal-share-btn');
+    expect(firstShare).toBeInTheDocument();
+    const secondShare = getByTestId('1-horizontal-share-btn');
+    expect(secondShare).toBeInTheDocument();
+  });
+
+  test('Verifica se o botão de Favorito é mostrado', () => {
+    const { getByTestId } = renderWithRouter(<FavoriteRecipes />);
+    const firstFavorite = getByTestId('0-horizontal-favorite-btn');
+    expect(firstFavorite).toBeInTheDocument();
+    const secondFavorite = getByTestId('1-horizontal-favorite-btn');
+    expect(secondFavorite).toBeInTheDocument();
+  });
+
   test('Verifica se o título está presente e contém o texto "Receitas Favoritas"', () => {
     const { getByTestId } = renderWithRouter(
       <FavoriteRecipes title="Receitas Favoritas" visible={ false } />,
@@ -118,5 +187,25 @@ describe('2 - Verifica se uma receita favorita é carregada', () => {
 
     const recipeName = screen.getByTestId('0-horizontal-name');
     expect(recipeName.innerHTML).toBe('Timbits');
+  });
+});
+
+describe('3 - Testa se quanto uma imagem ou título de receita é clicado', () => {
+  beforeAll(() => localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes)));
+
+  test('Testa quando a imagem de receita é clicada', () => {
+    const { getByTestId, history } = renderWithRouter(<FavoriteRecipes />);
+    const firstImage = getByTestId('0-horizontal-image');
+    userEvent.click(firstImage);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/comidas/52771');
+  });
+
+  test('Verifica quando o título da receita é clicado', () => {
+    const { getByText, history } = renderWithRouter(<FavoriteRecipes />);
+    const secondRecipeName = getByText('Aquamarine');
+    userEvent.click(secondRecipeName);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/bebidas/178319');
   });
 });
