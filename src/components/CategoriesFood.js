@@ -8,6 +8,7 @@ function CategoriesFood() {
     directRequestFood,
     setIsDrinkOrMealLoading,
     setMealsOrDrinks,
+    setCameFromIngredient,
   } = useContext(RecipeContext);
 
   // Pegar no máximo 5 categorias e colocar na tela
@@ -22,11 +23,16 @@ function CategoriesFood() {
     setIsDrinkOrMealLoading(false);
   };
 
+  const handleClick = () => {
+    setCameFromIngredient(false);
+    directRequestFood();
+  };
+
   return (
     <div className="categorias">
       <button
         type="button"
-        onClick={ () => directRequestFood() }
+        onClick={ handleClick }
         data-testid="All-category-filter"
       >
         All
@@ -45,7 +51,7 @@ function CategoriesFood() {
                 target.firstChild.checked = !target.firstChild.checked;
                 return (
                   target.firstChild.checked
-                    ? fetchCategory(target.value) : directRequestFood());
+                    ? fetchCategory(target.value) : handleClick);
               } }
               key={ elem.strCategory }
             >

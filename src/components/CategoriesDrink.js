@@ -8,6 +8,7 @@ function CategoriesDrink() {
     setMealsOrDrinks,
     setIsDrinkOrMealLoading,
     directRequestDrink,
+    setCameFromIngredient,
   } = useContext(RecipeContext);
 
   // Pegar no máximo 5 categorias e colocar na tela
@@ -22,10 +23,15 @@ function CategoriesDrink() {
     setIsDrinkOrMealLoading(false);
   };
 
+  const handleClick = () => {
+    setCameFromIngredient(false);
+    directRequestDrink();
+  };
+
   return (
     <div className="categorias">
       <button
-        onClick={ () => directRequestDrink() }
+        onClick={ handleClick }
         data-testid="All-category-filter"
         type="button"
       >
@@ -47,7 +53,7 @@ function CategoriesDrink() {
                 target.firstChild.checked = !target.firstChild.checked;
                 return (
                   target.firstChild.checked
-                    ? fetchCategory(target.value) : directRequestDrink());
+                    ? fetchCategory(target.value) : handleClick);
               } }
               key={ elem.strCategory }
             >

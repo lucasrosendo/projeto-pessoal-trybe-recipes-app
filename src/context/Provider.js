@@ -27,6 +27,10 @@ function Provider({ children }) {
   const [copied, setCopied] = useState(false);
   // Getter e setter de controle do checkbox de Ingredientes
   const [verifyCheckbox, setVerifyCheckbox] = useState([false]);
+  // Getter e setter de controle das comidas por ingrediente - req 77
+  const [foodsOrDrinksByIngredient, setFoodsOrDrinksByIngredient] = useState([]);
+  // Getter e setter de controle da renderização de comidas ou bebidas por ingrediente - req 77
+  const [cameFromIngredient, setCameFromIngredient] = useState(false);
   // Getter e setter de controle de Receitas Favoritas
   const [receitasFav, setReceitasFav] = useState([]);
 
@@ -157,6 +161,10 @@ function Provider({ children }) {
     setCopied, // Seta o link copiado na copied
     verifyCheckbox, // Controlar o checkbox de Ingredientes
     setVerifyCheckbox, // Controlar o checkbox de Ingredientes
+    setFoodsOrDrinksByIngredient, // Controlar a bebidas ou comidas que contem um ingrediente específico - req 77
+    foodsOrDrinksByIngredient,
+    setCameFromIngredient,
+    cameFromIngredient,
     receitasFav, // Controlar as receitas Favoritas
     setReceitasFav, // Controlar as receitas Favoritas
   };
