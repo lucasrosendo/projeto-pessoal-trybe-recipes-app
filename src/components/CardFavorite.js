@@ -20,7 +20,7 @@ function CardFavorite({ objDetail, index }) {
     }, TWO_SECONDS);
   };
 
-    // Função para remoção do Favorito
+  // Função para remoção do Favorito
   const removeFavorite = () => {
     if (localStorage.getItem('favoriteRecipes') !== null) {
       // Guarda na variável favoriteRecipes todas as informações do localStorage com chave 'favoriteRecipes'
@@ -32,8 +32,6 @@ function CardFavorite({ objDetail, index }) {
       setReceitasFav(updatedFavorites);
     }
   };
-
-
 
   const render = () => (
     <div className="done-card-body">

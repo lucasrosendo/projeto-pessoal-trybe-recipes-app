@@ -91,7 +91,6 @@ function Details() {
     // Guarda na variável ingredientes um array com todas as informações chave+valor do ID no qual está com a página aberta
     const ingredientes = Object.entries(objDetail[0]);
 
-    console.log('ingredientes', ingredientes);
     // Guarda na variável measure um array com todas as informaçoes 'strMeasure' de medição dos ingredientes
     const measure = ingredientes.filter((elem) => (
       elem[0].includes('strMeasure') && elem[1] !== null && elem[1] !== ''
