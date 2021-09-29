@@ -6,7 +6,7 @@ function NotFound({ history }) {
     <div className="not-found-body">
       <div className="message">
         <h1>404</h1>
-        <h3 id="msg-notfound">A página que você procura não foi encontrada</h3>
+        <h3 id="msg-notfound">Not Found</h3>
         <button type="button" onClick={ history.goBack }>voltar</button>
       </div>
     </div>

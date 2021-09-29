@@ -50,10 +50,11 @@ function CategoriesDrink() {
               value={ elem.strCategory }
               // Ao clicar no botão, será acionado a função fetchFilterCategory passando a ela o value como parametro, que é o botão clicado
               onClick={ ({ target }) => {
+                setCameFromIngredient(false);
                 target.firstChild.checked = !target.firstChild.checked;
                 return (
                   target.firstChild.checked
-                    ? fetchCategory(target.value) : handleClick);
+                    ? fetchCategory(target.value) : directRequestDrink());
               } }
               key={ elem.strCategory }
             >

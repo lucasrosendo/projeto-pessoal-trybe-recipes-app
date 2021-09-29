@@ -63,6 +63,4 @@ export default App;
 // Requisitos 33-46 => recipe_detail_spec.js
 // Requisitos 47-53 => recipe_in_progress_spec.js
 // Requisitos 54-59 => done_recipes_spec.js
-
-
 // Requisitos 82-87 =>profile_spec.js
