@@ -84,7 +84,7 @@ function IngredientsCheckbox({ objDetail, id, url }) {
       target.parentNode.classList.remove(SELECTED_LI);
     } else { target.parentNode.classList.add(SELECTED_LI); }
   };
-  
+
   const getIngredients = () => {
     const ingredientes = Object.entries(objDetail[0]);
 
