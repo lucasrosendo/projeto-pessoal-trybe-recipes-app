@@ -17,3 +17,9 @@ Nesse projeto, fui utilizado:
   * https://github.com/JulianeMarques
   
   ### Utilizamos o método de pair programing, para melhor compartilhamento de conhecimentos entre os membros do grupo
+  
+  
+   ## Para rodar o projeto:
+  * Fazer uma copia do SSH  ```git@github.com:lucasrosendo/projeto-pessoal-trybe-recipes-app.git```
+  * Executar o comando npm install
+  * Executar o comando npm start
